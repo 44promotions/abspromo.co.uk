@@ -1,0 +1,11 @@
+{
+  "name": "44promotions",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "vercel dev",
+    "build": "vercel build"
+  },
+  "dependencies": {
+    "nodemailer": "^6.9.0"
+  }
+}

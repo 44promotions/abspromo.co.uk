@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head><title>Test</title></head>
+<body>
+<h1>Test Page</h1>
+<div id="output">Loading...</div>
+<script>
+document.getElementById('output').textContent = 'Script started';
+fetch('products.json')
+  .then(r => r.json())
+  .then(data => {
+    document.getElementById('output').textContent = 'Products loaded: ' + data.length;
+  })
+  .catch(e => {
+    document.getElementById('output').textContent = 'Error: ' + e.message;
+  });
+</script>
+</body>
+</html>
