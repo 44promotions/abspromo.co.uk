@@ -279,6 +279,19 @@ footer .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); margin-top:
           </div>
           
           <div class="category-group">
+            <div class="category-parent" onclick="toggleCategory('accessories')">
+              <span>Accessories</span>
+              <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="category-children" id="accessories">
+              <a href="#" onclick="filterCategory('accessories')">All Accessories</a>
+              <a href="#" onclick="filterSubcategory('Eyeglasses Cases')">Eyeglasses Cases</a>
+              <a href="#" onclick="filterSubcategory('Keychains')">Keychains</a>
+              <a href="#" onclick="filterSubcategory('Lanyards')">Lanyards</a>
+            </div>
+          </div>
+          
+          <div class="category-group">
             <div class="category-parent" onclick="filterCategory('toys')">
               <span>Toys & Gifts</span>
             </div>
@@ -375,8 +388,20 @@ footer .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); margin-top:
 <script src="products_data.js"></script>
 <script>
 let currentCategory = 'all';
+let currentSubcategory = '';
 let currentPage = 1;
 const productsPerPage = 12;
+
+function filterSubcategory(subcategory) {
+  currentSubcategory = subcategory;
+  currentCategory = 'all';
+  currentPage = 1;
+  document.querySelectorAll('.category-children a').forEach(a => a.classList.remove('active'));
+  if (event && event.target) {
+    event.target.classList.add('active');
+  }
+  renderProducts();
+}
 
 function renderProducts() {
   const grid = document.getElementById('productsGrid');
@@ -385,6 +410,11 @@ function renderProducts() {
   let filtered = currentCategory === 'all' 
     ? productsData 
     : productsData.filter(p => p.category === currentCategory);
+  
+  // Apply subcategory filter
+  if (currentSubcategory) {
+    filtered = filtered.filter(p => p.subcategory === currentSubcategory);
+  }
   
   // Apply price range filter
   const priceCheckboxes = document.querySelectorAll('.filter-group input[type="checkbox"]');
