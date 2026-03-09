@@ -491,10 +491,10 @@ function renderProducts() {
   if (currentCategory === 'all') {
     filtered = productsData;
   } else if (mainCategories.includes(currentCategory)) {
-    // It's a main category
+    // It's a main category - show ALL products in this category (including those with empty subcategory)
     filtered = productsData.filter(p => p.category === currentCategory);
   } else {
-    // It's a subcategory - filter by subcategory
+    // It's a subcategory - filter by subcategory only
     filtered = productsData.filter(p => p.subcategory === currentCategory);
   }
   
