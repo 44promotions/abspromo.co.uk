@@ -103,7 +103,10 @@ footer .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); margin-top:
         <a href="index.html" class="logo-text">ABS<span>Promo</span></a>
       </div>
       <div class="col-md-6">
-        <input type="text" placeholder="Search products..." style="width:100%;padding:10px 20px;border:1px solid #ddd;border-radius:25px;">
+        <div style="position:relative;max-width:400px;">
+          <input type="text" id="searchInput" placeholder="Search products..." style="width:100%;padding:10px 45px 10px 20px;border:1px solid #ddd;border-radius:25px;" onkeyup="if(event.key==='Enter') searchProducts()">
+          <button onclick="searchProducts()" style="position:absolute;right:5px;top:50%;transform:translateY(-50%);background:#1c3f87;border:none;color:#fff;width:35px;height:35px;border-radius:50%;cursor:pointer;"><i class="fas fa-search"></i></button>
+        </div>
       </div>
       <div class="col-md-3 text-end">
         <a href="#"><i class="fas fa-shopping-cart"></i> Cart</a>
@@ -361,6 +364,22 @@ function submitQuote(e) {
 }
 
 document.title = product.name + ' - ABSPromo';
+</script>
+<script src="products_data.js"></script>
+<script>
+function searchProducts() {
+  const query = document.getElementById('searchInput').value.trim();
+  if (!query) return;
+  const found = productsData.find(p => 
+    p.product_number.toLowerCase() === query.toLowerCase() ||
+    p.name.toLowerCase().includes(query.toLowerCase())
+  );
+  if (found) {
+    window.location.href = 'product-detail.html?id=' + found.product_number;
+  } else {
+    window.location.href = 'products.html?search=' + encodeURIComponent(query);
+  }
+}
 </script>
 </body>
 </html>
