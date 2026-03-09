@@ -129,8 +129,8 @@ footer ul li a:hover { color: #f4c542; }
       </div>
       <div class="col-lg-6 col-md-5">
         <div class="search-box">
-          <input type="text" placeholder="Search products...">
-          <button><i class="fas fa-search"></i></button>
+          <input type="text" placeholder="Search products..." id="searchInput" onkeyup="if(event.key==='Enter') searchProducts()">
+          <button onclick="searchProducts()"><i class="fas fa-search"></i></button>
         </div>
       </div>
       <div class="col-lg-4 col-md-4">
@@ -484,6 +484,23 @@ document.addEventListener('DOMContentLoaded', function() {
     changeLanguage(savedLang);
   }
 });
+</script>
+<script src="products_data.js"></script>
+<script>
+function searchProducts() {
+  const query = document.getElementById('searchInput').value.trim();
+  if (!query) return;
+  // Search by name or product number
+  const found = productsData.find(p => 
+    p.product_number.toLowerCase() === query.toLowerCase() ||
+    p.name.toLowerCase().includes(query.toLowerCase())
+  );
+  if (found) {
+    window.location.href = 'product-detail.html?id=' + found.product_number;
+  } else {
+    window.location.href = 'products.html?search=' + encodeURIComponent(query);
+  }
+}
 </script>
 </body>
 </html>
