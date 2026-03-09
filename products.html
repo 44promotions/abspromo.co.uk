@@ -534,7 +534,6 @@ function renderProducts() {
     </div>
   `).join('');
   
-  const start = (currentPage - 1) * productsPerPage;
   const end = Math.min(start + productsPerPage, filtered.length);
   document.getElementById('productCount').textContent = `Showing ${start + 1}-${end} of ${filtered.length} products`;
 }
