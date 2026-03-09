@@ -571,10 +571,33 @@ function requestQuote(id) {
 
 function searchProducts() {
   const query = document.getElementById('searchInput').value.toLowerCase();
+  if (!query) {
+    currentCategory = 'all';
+    renderProducts();
+    return;
+  }
+  const grid = document.getElementById('productsGrid');
   const filtered = productsData.filter(p => p.name.toLowerCase().includes(query));
   currentCategory = 'all';
   currentPage = 1;
-  renderProducts();
+  const totalPages = Math.ceil(filtered.length / productsPerPage);
+  renderPagination(totalPages);
+  const start = (currentPage - 1) * productsPerPage;
+  const pageProducts = filtered.slice(start, start + productsPerPage);
+  grid.innerHTML = pageProducts.map(p => `
+    <div class="col-6 col-md-4 col-lg-4">
+      <div class="product-card" onclick="location.href='product-detail.html?id=${p.product_number}'" style="cursor:pointer;">
+        <div class="product-img">
+          <img src="${p.images1 || 'https://via.placeholder.com/300x300'}" alt="${p.name}">
+        </div>
+        <div class="product-info">
+          <div class="product-name">${p.name}</div>
+          <div class="product-price">From £${p.price5 ? p.price5.toFixed(2) : (p.price1 ? p.price1.toFixed(2) : '-')}</div>
+        </div>
+      </div>
+    </div>
+  `).join('');
+  document.getElementById('productCount').textContent = `Found ${filtered.length} products`;
 }
 
 function sortProducts() {
