@@ -484,14 +484,18 @@ function filterSubcategory(subcategory) {
 function renderProducts() {
   const grid = document.getElementById('productsGrid');
   
-  // Start with category filter
-  let filtered = currentCategory === 'all' 
-    ? productsData 
-    : productsData.filter(p => p.category === currentCategory);
+  // Check if currentCategory is a main category or subcategory
+  const mainCategories = ['drinkware', 'bags', 'apparel', 'tech', 'office', 'home', 'sports', 'automotive', 'beauty', 'accessories', 'toys', 'pet', 'other'];
   
-  // Apply subcategory filter
-  if (currentSubcategory) {
-    filtered = filtered.filter(p => p.subcategory === currentSubcategory);
+  let filtered;
+  if (currentCategory === 'all') {
+    filtered = productsData;
+  } else if (mainCategories.includes(currentCategory)) {
+    // It's a main category
+    filtered = productsData.filter(p => p.category === currentCategory);
+  } else {
+    // It's a subcategory - filter by subcategory
+    filtered = productsData.filter(p => p.subcategory === currentCategory);
   }
   
   // Apply price range filter
