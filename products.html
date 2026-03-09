@@ -171,7 +171,7 @@ footer .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); margin-top:
               <i class="fas fa-chevron-down"></i>
             </div>
             <div class="category-children" id="drinkware">
-              <a href="#" onclick="filterCategory('all')">All Drinkware</a>
+              <a href="#" onclick="filterCategory('drinkware')">All Drinkware</a>
               <a href="#" onclick="filterCategory('mugs')">Mugs</a>
               <a href="#" onclick="filterCategory('bottles')">Bottles</a>
               <a href="#" onclick="filterCategory('cups')">Cups & Glasses</a>
@@ -184,7 +184,7 @@ footer .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); margin-top:
               <i class="fas fa-chevron-down"></i>
             </div>
             <div class="category-children" id="bags">
-              <a href="#" onclick="filterCategory('all')">All Bags</a>
+              <a href="#" onclick="filterCategory('bags')">All Bags</a>
               <a href="#" onclick="filterCategory('backpacks')">Backpacks</a>
               <a href="#" onclick="filterCategory('tote-bags')">Tote Bags</a>
               <a href="#" onclick="filterCategory('pouches')">Pouches</a>
@@ -198,7 +198,7 @@ footer .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); margin-top:
               <i class="fas fa-chevron-down"></i>
             </div>
             <div class="category-children" id="apparel">
-              <a href="#" onclick="filterCategory('all')">All Apparel</a>
+              <a href="#" onclick="filterCategory('apparel')">All Apparel</a>
               <a href="#" onclick="filterCategory('shirts')">Shirts</a>
               <a href="#" onclick="filterCategory('jackets')">Jackets</a>
               <a href="#" onclick="filterCategory('caps-hats')">Caps & Hats</a>
@@ -212,7 +212,7 @@ footer .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); margin-top:
               <i class="fas fa-chevron-down"></i>
             </div>
             <div class="category-children" id="tech">
-              <a href="#" onclick="filterCategory('all')">All Tech</a>
+              <a href="#" onclick="filterCategory('tech')">All Tech</a>
               <a href="#" onclick="filterCategory('usb-drives')">USB Drives</a>
               <a href="#" onclick="filterCategory('power-banks')">Power Banks</a>
               <a href="#" onclick="filterCategory('speakers')">Speakers</a>
@@ -230,7 +230,7 @@ footer .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); margin-top:
               <i class="fas fa-chevron-down"></i>
             </div>
             <div class="category-children" id="office">
-              <a href="#" onclick="filterCategory('all')">All Office</a>
+              <a href="#" onclick="filterCategory('office')">All Office</a>
               <a href="#" onclick="filterCategory('pens')">Pens</a>
               <a href="#" onclick="filterCategory('notebooks')">Notebooks</a>
               <a href="#" onclick="filterCategory('office-supplies')">Office Supplies</a>
@@ -243,7 +243,7 @@ footer .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); margin-top:
               <i class="fas fa-chevron-down"></i>
             </div>
             <div class="category-children" id="home">
-              <a href="#" onclick="filterCategory('all')">All Home</a>
+              <a href="#" onclick="filterCategory('home')">All Home</a>
               <a href="#" onclick="filterCategory('kitchen')">Kitchen</a>
               <a href="#" onclick="filterCategory('aprons')">Aprons</a>
               <a href="#" onclick="filterCategory('storage')">Storage</a>
@@ -257,7 +257,7 @@ footer .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); margin-top:
               <i class="fas fa-chevron-down"></i>
             </div>
             <div class="category-children" id="sports">
-              <a href="#" onclick="filterCategory('all')">All Sports</a>
+              <a href="#" onclick="filterCategory('sports')">All Sports</a>
               <a href="#" onclick="filterCategory('yoga')">Yoga</a>
               <a href="#" onclick="filterCategory('fitness')">Fitness</a>
               <a href="#" onclick="filterCategory('camping')">Camping</a>
@@ -384,7 +384,7 @@ function renderProducts() {
   // Start with category filter
   let filtered = currentCategory === 'all' 
     ? productsData 
-    : productsData.filter(p => getProductCategory(p) === currentCategory);
+    : productsData.filter(p => p.category === currentCategory);
   
   // Apply price range filter
   const priceCheckboxes = document.querySelectorAll('.filter-group input[type="checkbox"]');
