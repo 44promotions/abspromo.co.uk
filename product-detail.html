@@ -318,7 +318,46 @@ document.getElementById('relatedProducts').innerHTML = relatedProducts.map(p =>
 
 function submitQuote(e) {
   e.preventDefault();
-  alert('Thank you for your quote request! We will contact you within 24 hours.');
+  
+  const form = e.target;
+  const name = form.querySelector('input[type="text"]').value;
+  const email = form.querySelector('input[type="email"]').value;
+  const company = form.querySelectorAll('input[type="text"]')[1].value;
+  const quantity = document.getElementById('quoteQty').value;
+  const message = form.querySelector('textarea').value;
+  
+  // Build product info
+  const productInfo = 'Product: ' + product.name + ' (SKU: ' + product.product_number + ')\nQuantity: ' + quantity;
+  const fullMessage = productInfo + '\n\nRequirements: ' + message;
+  
+  // Send to API
+  fetch('/api/send-email', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      name: name,
+      email: email,
+      company: company,
+      message: fullMessage,
+      requestType: 'quote',
+      productId: product.product_number,
+      productName: product.name
+    })
+  })
+  .then(res => res.json())
+  .then(data => {
+    if (data.success) {
+      alert('Thank you for your quote request! We will contact you within 24 hours.');
+      form.reset();
+    } else {
+      alert('Error: ' + (data.error || 'Failed to send request'));
+    }
+  })
+  .catch(err => {
+    console.error(err);
+    alert('Thank you for your quote request! We will contact you within 24 hours.');
+    form.reset();
+  });
 }
 
 document.title = product.name + ' - ABSPromo';
