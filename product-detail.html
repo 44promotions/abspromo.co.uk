@@ -3,557 +3,330 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Loading... - 44Promotions</title>
+<title>Product - ABSPromo</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Oswald:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Open Sans',sans-serif;background:#f5f5f5;color:#333}
-h1,h2,h3,h4,h5,h6{font-family:'Oswald',sans-serif}
-a{text-decoration:none;color:inherit}
-img{max-width:100%}
-#top-menu-wrap{background:#1a1a1a;color:#fff;padding:8px 0;font-size:12px}
-.utility-menu{list-style:none;display:flex;gap:15px;justify-content:flex-end;margin:0}
-.utility-menu a{color:#fff;cursor:pointer}
-#header-inner{background:#fff;padding:12px 0;box-shadow:0 2px 15px rgba(0,0,0,0.08);position:sticky;top:0;z-index:1000}
-.site-brand{font-family:'Oswald',sans-serif;font-size:26px;font-weight:700;color:#1e3c72}
-.navbar-nav .nav-link{padding:10px 15px;color:#333;font-weight:600;font-size:13px;text-transform:uppercase}
-.navbar-nav .nav-link:hover{color:#1e3c72}
-.breadcrumb{background:#fff;padding:15px 0;margin-bottom:0;border-bottom:1px solid #eee}
-.breadcrumb a{color:#1e3c72}
-.product-detail-section{padding:30px 0;background:#fff;margin-bottom:30px}
-.product-name{font-size:26px;color:#1a1a1a;margin-bottom:10px}
-.item-number{color:#666;font-size:14px}
-.product-img-main{position:relative;width:100%;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;background:#fff;border:1px solid #e5e5e5;border-radius:12px;overflow:hidden}
-.product-img-main img{max-width:92%;max-height:92%;object-fit:contain}
-.product-thumbnails{display:flex;gap:10px;margin-top:15px;flex-wrap:wrap}
-.product-thumbnails img{width:70px;height:70px;object-fit:cover;border:2px solid transparent;border-radius:8px;cursor:pointer;transition:all .2s;background:#f5f5f5}
-.product-thumbnails img:hover,.product-thumbnails img.active{border-color:#1e3c72}
-.share-block{list-style:none;display:flex;gap:15px;margin:15px 0;padding:0;flex-wrap:wrap}
-.share-block li a{color:#666;font-size:13px;cursor:pointer;display:flex;align-items:center;gap:5px}
-.share-block li a:hover{color:#1e3c72}
-.product-tabs{border-bottom:2px solid #1e3c72;margin-top:25px;display:flex;flex-wrap:wrap}
-.product-tabs .nav-link{border:none;border-radius:0;padding:12px 20px;color:#666;font-weight:600;font-size:13px;text-transform:uppercase}
-.product-tabs .nav-link:hover{color:#1e3c72;background:#f8f9fa}
-.product-tabs .nav-link.active{background:#1e3c72;color:#fff}
-.tab-content{padding:20px 0}
-.tab-pane{color:#555;line-height:1.7;font-size:14px}
-.price-section{margin:25px 0}
-.price-grid{border:1px solid #e5e5e5;border-radius:10px;overflow:hidden}
-.price-grid table{width:100%;margin-bottom:0}
-.price-grid th{background:#f8f9fa;padding:14px 10px;text-align:center;font-weight:600;border-bottom:1px solid #e5e5e5}
-.price-grid td{padding:14px 10px;text-align:center;border-bottom:1px solid #eee}
-.price-grid .quantity-row{background:#f0f0f0}
-.price-grid .quantity-cell{text-align:left;font-weight:600}
-.order-section{margin-top:30px;padding:25px;background:#f8f9fa;border-radius:12px}
-.order-section h4{margin-bottom:20px;color:#1a1a1a}
-.order-form .form-control{border:1px solid #ddd;border-radius:8px;padding:12px}
-.order-form label{font-size:13px;color:#555;font-weight:600;margin-bottom:6px}
-.qty-row{display:flex;gap:15px;margin-bottom:15px}
-.qty-row .qty-input{width:140px}
-.action-buttons{margin-top:20px;display:flex;gap:12px;flex-wrap:wrap}
-.btn-add-cart{background:#1e3c72;color:#fff;padding:14px 32px;border:none;font-weight:700;text-transform:uppercase;font-size:13px;border-radius:8px}
-.btn-add-cart:hover{background:#2a5298;color:#fff}
-.btn-request-info{background:#f4c542;color:#1a1a1a;padding:14px 32px;border:none;font-weight:700;text-transform:uppercase;font-size:13px;border-radius:8px}
-.btn-request-quote{background:#fff;color:#333;padding:14px 32px;border:2px solid #333;font-weight:700;text-transform:uppercase;font-size:13px;border-radius:8px}
-.btn-request-quote:hover{background:#333;color:#fff}
-.setup-info{margin-top:15px;font-size:12px;color:#666;background:#f9f9f9;padding:10px 15px;border-radius:6px}
-footer{background:#1a1a1a;color:#fff;padding:30px 0 15px;margin-top:50px}
-footer h5{color:#f4c542;margin-bottom:15px;text-transform:uppercase;font-size:14px}
-footer ul{list-style:none;padding:0}
-footer ul li{margin-bottom:8px}
-footer a{color:#aaa}
-.copyright{text-align:center;margin-top:20px;padding-top:15px;border-top:1px solid #333;color:#666;font-size:12px}
-.loading{text-align:center;padding:80px 20px}
-.back-to-top{position:fixed;bottom:30px;right:30px;background:#1e3c72;color:#fff;width:45px;height:45px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;visibility:hidden;transition:all .3s;z-index:999}
-.back-to-top.show{opacity:1;visibility:visible}
-.modal-header{background:#1e3c72;color:#fff}
-.modal-header .btn-close{filter:invert(1)}
-.cart-badge{background:#f4c542;color:#000;border-radius:50%;padding:2px 6px;font-size:10px;margin-left:5px}
-@media (max-width:991px){.product-img-wrapper{position:static;margin-bottom:30px}}
-@media (max-width:767px){.product-detail-section{padding:20px 0}.product-name{font-size:20px}.price-grid{display:none}.action-buttons{flex-direction:column}.action-buttons .btn{width:100%}.qty-row{flex-direction:column}.qty-row .qty-input{width:100%}}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Poppins', sans-serif; background: #fff; }
+a { text-decoration: none; color: inherit; }
+img { max-width: 100%; }
+
+/* Header */
+.top-bar { background: #1c3f87; color: #fff; padding: 8px 0; font-size: 13px; }
+header { background: #fff; box-shadow: 0 2px 10px rgba(0,0,0,0.08); }
+.logo-text { font-size: 28px; font-weight: 700; color: #1c3f87; }
+.logo-text span { color: #f4c542; }
+.navbar { background: #1c3f87 !important; }
+.navbar-dark .navbar-nav .nav-link { color: #fff !important; padding: 15px 20px; font-weight: 500; font-size: 13px; text-transform: uppercase; }
+
+/* Breadcrumb */
+.breadcrumb-wrap { background: #f5f5f5; padding: 12px 0; }
+.breadcrumb { margin: 0; font-size: 13px; }
+.breadcrumb a { color: #1c3f87; }
+
+/* Product Main */
+.product-section { padding: 40px 0; }
+
+/* Gallery */
+.main-img { width: 100%; aspect-ratio: 1; background: #fff; border: 1px solid #e5e5e5; border-radius: 8px; display: flex; align-items: center; justify-content: center; }
+.main-img img { max-width: 95%; max-height: 95%; object-fit: contain; }
+.thumb-list { display: flex; gap: 10px; margin-top: 15px; flex-wrap: wrap; }
+.thumb { width: 70px; height: 70px; border: 2px solid #eee; border-radius: 6px; cursor: pointer; overflow: hidden; }
+.thumb:hover, .thumb.active { border-color: #1c3f87; }
+.thumb img { width: 100%; height: 100%; object-fit: cover; }
+
+/* Related */
+.related-card { border: 1px solid #eee; border-radius: 6px; padding: 10px; text-align: center; cursor: pointer; transition: all 0.2s; }
+.related-card:hover { border-color: #1c3f87; }
+.related-card img { width: 100%; height: 80px; object-fit: contain; margin-bottom: 8px; }
+.related-name { font-size: 12px; color: #333; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.related-price { font-size: 12px; color: #1c3f87; font-weight: 600; }
+
+/* Info */
+.product-title { font-size: 24px; color: #222; font-weight: 600; margin-bottom: 8px; }
+.product-sku { color: #888; font-size: 14px; margin-bottom: 15px; }
+.product-cat { display: inline-block; background: #1c3f87; color: #fff; padding: 4px 12px; border-radius: 15px; font-size: 12px; margin-bottom: 15px; }
+.product-desc { color: #555; line-height: 1.7; font-size: 14px; margin-bottom: 25px; }
+
+/* Specs */
+.specs-box { background: #f9f9f9; padding: 20px; border-radius: 8px; margin-bottom: 25px; }
+.spec-row { display: flex; padding: 8px 0; border-bottom: 1px solid #eee; }
+.spec-row:last-child { border-bottom: none; }
+.spec-label { width: 140px; color: #888; font-size: 13px; }
+.spec-value { color: #333; font-weight: 500; font-size: 13px; }
+
+/* Price Table */
+.price-box { margin-bottom: 25px; }
+.price-table { width: 100%; border-collapse: collapse; }
+.price-table th { background: #1c3f87; color: #fff; padding: 10px; text-align: center; font-weight: 600; font-size: 13px; }
+.price-table td { padding: 10px; text-align: center; border: 1px solid #ddd; font-size: 13px; }
+.price-table tr:nth-child(even) { background: #f9f9f9; }
+.price-table .qty { font-weight: 600; }
+
+/* Quote Form */
+.quote-form { background: #1c3f87; padding: 25px; border-radius: 8px; color: #fff; }
+.quote-form h4 { margin-bottom: 20px; }
+.quote-form .form-control { border: none; border-radius: 6px; padding: 12px; }
+.quote-form .btn-quote { background: #f4c542; color: #1c3f87; border: none; padding: 14px; border-radius: 6px; font-weight: 700; width: 100%; font-size: 16px; }
+
+/* Footer */
+footer { background: #1c3f87; color: #fff; padding: 40px 0 15px; }
+footer h5 { color: #f4c542; margin-bottom: 15px; }
+footer ul { list-style: none; padding: 0; }
+footer ul li { margin-bottom: 8px; font-size: 13px; }
+footer ul li a { color: rgba(255,255,255,0.8); }
+footer .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); margin-top: 20px; padding-top: 15px; text-align: center; font-size: 12px; }
 </style>
 </head>
 <body>
 
-<div id="top-menu-wrap">
-<div class="container-fluid">
-<div class="row align-items-center">
-<div class="col-6"><ul style="list-style:none;display:flex;gap:15px;margin:0"><li><a href="index.html">Home</a></li></ul></div>
-<div class="col-6">
-<ul class="utility-menu">
-<li><a href="index.html?page=cart"><i class="fas fa-shopping-cart"></i> Cart <span id="cartCount" class="cart-badge">0</span></a></li>
-<li id="signInBtn"><a data-bs-toggle="modal" data-bs-target="#authModal"><i class="far fa-user"></i> Sign In</a></li>
-<li id="userBtn" style="display:none"><span id="userName"></span></li>
-<li id="logoutBtn" style="display:none"><a>Logout</a></li>
-</ul>
-</div>
-</div>
-</div>
+<!-- Top Bar -->
+<div class="top-bar">
+  <div class="container">
+    <div class="d-flex justify-content-between">
+      <div>
+        <a href="tel:+442476981030"><i class="fas fa-phone me-2"></i>+44 247 698 1030</a>
+        <span class="mx-2">|</span>
+        <a href="mailto:Info@abspromo.co.uk">Info@abspromo.co.uk</a>
+      </div>
+    </div>
+  </div>
 </div>
 
-<div id="header-inner">
-<div class="container">
-<div class="row align-items-center">
-<div class="col-lg-3"><a class="site-brand" href="index.html">44Promotions</a></div>
-<div class="col-lg-9">
-<nav class="navbar navbar-expand-lg">
-<button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav"><i class="fas fa-bars"></i></button>
-<div class="collapse navbar-collapse" id="nav">
-<ul class="navbar-nav ms-auto" id="categoryNav"><li class="nav-item"><a class="nav-link" href="index.html">All Products</a></li></ul>
-</div>
+<!-- Header -->
+<header class="py-3">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-3">
+        <a href="index.html" class="logo-text">ABS<span>Promo</span></a>
+      </div>
+      <div class="col-md-6">
+        <input type="text" placeholder="Search products..." style="width:100%;padding:10px 20px;border:1px solid #ddd;border-radius:25px;">
+      </div>
+      <div class="col-md-3 text-end">
+        <a href="#"><i class="fas fa-shopping-cart"></i> Cart</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Nav -->
+<nav class="navbar navbar-expand-lg navbar-dark">
+  <div class="container">
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="products.html">Products</a></li>
+      </ul>
+    </div>
+  </div>
 </nav>
-</div>
-</div>
-</div>
+
+<!-- Breadcrumb -->
+<div class="breadcrumb-wrap">
+  <div class="container">
+    <nav class="breadcrumb">
+      <a href="index.html">Home</a> / <a href="products.html">Products</a> / <span id="breadcrumbName">Product</span>
+    </nav>
+  </div>
 </div>
 
-<div class="breadcrumb">
-<div class="container"><nav><ol class="breadcrumb mb-0" id="breadcrumb"><li class="breadcrumb-item"><a href="index.html">Home</a></li><li class="breadcrumb-item active">Loading...</li></ol></nav></div>
-</div>
-
-<section class="product-detail-section">
-<div class="container">
-<div id="loading" class="loading"><i class="fas fa-spinner fa-spin fa-2x"></i><p>Loading...</p></div>
-<div id="productContent" style="display:none">
-<div class="row">
-<div class="col-lg-6">
-<div class="product-img-wrapper">
-<div class="product-img-main"><img id="mainImage" src="" alt="Product"></div>
-<div class="product-thumbnails" id="thumbnails"></div>
-</div>
-</div>
-<div class="col-lg-6">
-<h1 class="product-name" id="productName"></h1>
-<p class="item-number"><strong>Item #</strong> <span id="itemNum"></span></p>
-<ul class="share-block">
-<li><a onclick="shareProduct()"><i class="fas fa-share-alt"></i> Share</a></li>
-<li><a onclick="window.print()"><i class="fas fa-print"></i> Print</a></li>
-<li><a onclick="emailProduct()"><i class="far fa-envelope"></i> Email</a></li>
-</ul>
-<ul class="nav product-tabs">
-<li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#overview">Overview</button></li>
-<li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#colors">Colors</button></li>
-<li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#imprint">Imprint</button></li>
-<li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#delivery">Delivery</button></li>
-</ul>
-<div class="tab-content">
-<div class="tab-pane fade show active" id="overview"></div>
-<div class="tab-pane fade" id="colors"></div>
-<div class="tab-pane fade" id="imprint"></div>
-<div class="tab-pane fade" id="delivery"></div>
-</div>
-<div class="price-grid price-section">
-<table class="table table-bordered mb-0">
-<thead><tr class="quantity-row"><th class="quantity-cell">Quantity:</th><th id="th1">50</th><th id="th2">100</th><th id="th3">200</th><th id="th4">400</th><th id="th5">800</th><th id="th6">2400</th></tr></thead>
-<tbody><tr><td class="quantity-cell"><strong>List Price</strong>:</td><td id="listPrice1"></td><td id="listPrice2"></td><td id="listPrice3"></td><td id="listPrice4"></td><td id="listPrice5"></td><td id="listPrice6"></td></tr></tbody>
-</table>
-</div>
-<p class="setup-info" id="setupInfo"></p>
-<div class="order-section">
-<h4>Order This Product</h4>
-<form class="order-form" id="orderForm">
-<input type="hidden" id="productId" name="productId">
-<input type="hidden" id="productNameInput" name="productName">
-<div class="row">
-<div class="col-md-6 mb-3"><label>Quantity *</label><input type="number" class="form-control" id="qty" name="quantity" min="1" required></div>
-<div class="col-md-6 mb-3"><label>Color</label><select class="form-select" id="colorSelect" name="color"><option value="">Select</option></select></div>
-</div>
-<div class="action-buttons">
-<button type="button" class="btn btn-add-cart" onclick="addToCart()">Add to Cart</button>
-<button type="button" class="btn btn-request-info" data-bs-toggle="modal" data-bs-target="#requestModal" onclick="setRequestType('info')">Request Info</button>
-<button type="button" class="btn btn-request-quote" data-bs-toggle="modal" data-bs-target="#requestModal" onclick="setRequestType('quote')">Request Quote</button>
-</div>
-</form>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div id="notFound" class="loading" style="display:none"><i class="fas fa-exclamation-circle fa-2x"></i><p>Product not found</p><a href="index.html" class="btn btn-add-cart">Back to Home</a></div>
-</div>
+<!-- Product Section -->
+<section class="product-section">
+  <div class="container">
+    <div class="row">
+      <!-- Gallery -->
+      <div class="col-lg-6">
+        <div class="main-img">
+          <img id="mainImage" src="" alt="Product">
+        </div>
+        <div class="thumb-list" id="thumbList"></div>
+        
+        <!-- Related Products -->
+        <div class="related-products" style="margin-top:50px;">
+          <h6 style="color:#666;margin-bottom:10px;">Related Products</h6>
+          <div class="row g-2" id="relatedProducts"></div>
+        </div>
+      </div>
+      
+      <!-- Info -->
+      <div class="col-lg-6">
+        <span class="product-cat" id="productCategory">Category</span>
+        <h1 class="product-title" id="productName">Loading...</h1>
+        <div class="product-sku">SKU: <span id="productSku">-</span></div>
+        
+        <p class="product-desc" id="productDesc">Loading...</p>
+        
+        <!-- Specs -->
+        <div class="specs-box">
+          <div class="spec-row"><span class="spec-label">Material</span><span class="spec-value" id="specMaterial">-</span></div>
+          <div class="spec-row"><span class="spec-label">Colors</span><span class="spec-value" id="specColor">-</span></div>
+          <div class="spec-row"><span class="spec-label">Size</span><span class="spec-value" id="specSize">-</span></div>
+          <div class="spec-row"><span class="spec-label">Made In</span><span class="spec-value" id="specMadeIn">-</span></div>
+          <div class="spec-row"><span class="spec-label">Print Method</span><span class="spec-value" id="specPrint">-</span></div>
+          <div class="spec-row"><span class="spec-label">Production Time</span><span class="spec-value" id="specTime">-</span></div>
+        </div>
+        
+        <!-- Price Table -->
+        <div class="price-box">
+          <table class="price-table">
+            <thead>
+              <tr>
+                <th>50</th>
+                <th>100</th>
+                <th>250</th>
+                <th>500</th>
+                <th>1000</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>£<span id="price1">-</span></td>
+                <td>£<span id="price2">-</span></td>
+                <td>£<span id="price3">-</span></td>
+                <td>£<span id="price4">-</span></td>
+                <td>£<span id="price5">-</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        
+        <!-- Quote Form -->
+        <div class="quote-form">
+          <h4>Request a Quote</h4>
+          <form onsubmit="submitQuote(event)">
+            <div class="row g-3">
+              <div class="col-6">
+                <input type="text" class="form-control" placeholder="Name *" required>
+              </div>
+              <div class="col-6">
+                <input type="email" class="form-control" placeholder="Email *" required>
+              </div>
+              <div class="col-6">
+                <input type="text" class="form-control" placeholder="Company">
+              </div>
+              <div class="col-6">
+                <input type="number" class="form-control" id="quoteQty" placeholder="Quantity *" min="1" required>
+              </div>
+              <div class="col-12">
+                <textarea class="form-control" rows="2" placeholder="Requirements"></textarea>
+              </div>
+              <div class="col-12">
+                <button type="submit" class="btn-quote">Submit Quote</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
+<!-- Footer -->
 <footer>
-<div class="container">
-<div class="row">
-<div class="col-md-4"><h5>Quick Links</h5><ul><li><a href="index.html">Home</a></li><li><a href="#">Contact</a></li></ul></div>
-<div class="col-md-4"><h5>Categories</h5><ul id="footerCategories"></ul></div>
-<div class="col-md-4"><h5>Contact</h5><ul><li>+44 207 0484 190</li><li>info@44promotions.co.uk</li><li>London, UK</li></ul></div>
-</div>
-<div class="copyright"><p>&copy; 2026 44Promotions</p></div>
-</div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <h5>ABSPromo</h5>
+        <p style="font-size:13px;opacity:0.8;">Your trusted partner for promotional products in the UK.</p>
+      </div>
+      <div class="col-md-4">
+        <h5>Contact</h5>
+        <ul>
+          <li>7 Copperfield Road, Coventry, UK CV2 4AQ</li>
+          <li>+44 247 698 1030</li>
+          <li>Info@abspromo.co.uk</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 ABS Promo Co Ltd. All rights reserved.</p>
+    </div>
+  </div>
 </footer>
 
-<div class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fas fa-arrow-up"></i></div>
-
-<!-- Auth Modal -->
-<div class="modal fade" id="authModal" tabindex="-1">
-<div class="modal-dialog">
-<div class="modal-content">
-<div class="modal-header"><h5 class="modal-title">Sign In / Register</h5><button class="btn-close" data-bs-dismiss="modal"></button></div>
-<div class="modal-body">
-<ul class="nav nav-tabs" id="authTabs" role="tablist">
-<li class="nav-item"><button class="nav-link active" id="loginTab" data-bs-toggle="tab" data-bs-target="#loginPane">Sign In</button></li>
-<li class="nav-item"><button class="nav-link" id="registerTab" data-bs-toggle="tab" data-bs-target="#registerPane">Register</button></li>
-</ul>
-<div class="tab-content mt-3">
-<div class="tab-pane fade show active" id="loginPane">
-<div class="mb-3"><label class="form-label">Email</label><input type="email" class="form-control" id="loginEmail"></div>
-<div class="mb-3"><label class="form-label">Password</label><input type="password" class="form-control" id="loginPassword"></div>
-<button class="btn btn-add-cart w-100" onclick="handleLogin()">Sign In</button>
-</div>
-<div class="tab-pane fade" id="registerPane">
-<div class="mb-3"><label class="form-label">Company Name</label><input type="text" class="form-control" id="regCompany"></div>
-<div class="mb-3"><label class="form-label">Email *</label><input type="email" class="form-control" id="regEmail" required></div>
-<div class="mb-3"><label class="form-label">Password *</label><input type="password" class="form-control" id="regPassword" required></div>
-<button class="btn btn-add-cart w-100" onclick="handleRegister()">Register</button>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-
-<!-- Request Modal -->
-<div class="modal fade" id="requestModal" tabindex="-1">
-<div class="modal-dialog">
-<div class="modal-content">
-<div class="modal-header"><h5 class="modal-title" id="requestModalTitle">Request Info</h5><button class="btn-close" data-bs-dismiss="modal"></button></div>
-<div class="modal-body">
-<form id="requestForm">
-<input type="hidden" id="reqProductId" name="productId">
-<input type="hidden" id="reqProductName" name="productName">
-<input type="hidden" id="reqType" name="requestType">
-<div class="mb-3"><label class="form-label">Your Name *</label><input type="text" class="form-control" id="reqName" name="name" required></div>
-<div class="mb-3"><label class="form-label">Company Name</label><input type="text" class="form-control" id="reqCompany" name="company"></div>
-<div class="mb-3"><label class="form-label">Email *</label><input type="email" class="form-control" id="reqEmail" name="email" required></div>
-<div class="mb-3"><label class="form-label">Message *</label><textarea class="form-control" id="reqMessage" name="message" rows="4" required></textarea></div>
-<button type="submit" class="btn btn-add-cart w-100">Submit Request</button>
-</form>
-</div>
-</div>
-</div>
-</div>
-
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="products_data.js"></script>
 <script>
-var products = [];
-var currentProduct = null;
-var categories = {};
-var cart = [];
+// Get product ID from URL
+const urlParams = new URLSearchParams(window.location.search);
+let productId = urlParams.get('id');
+if (!productId) productId = "AP0116";
 
-window.addEventListener('scroll', function() {
-    var backtop = document.querySelector('.back-to-top');
-    if (backtop) backtop.classList.toggle('show', window.scrollY > 300);
-});
+// Find product
+const product = productsData.find(p => p.product_number === productId) || productsData[0];
 
-function getProductId() {
-    return new URLSearchParams(location.search).get('id');
+// Render
+document.getElementById('productName').textContent = product.name;
+document.getElementById('breadcrumbName').textContent = product.name;
+document.getElementById('productSku').textContent = product.product_number;
+document.getElementById('productCategory').textContent = product.category || 'Products';
+document.getElementById('productDesc').textContent = product.description;
+
+document.getElementById('specMaterial').textContent = product.material || '-';
+document.getElementById('specColor').textContent = product.color || '-';
+document.getElementById('specSize').textContent = (product.length || '-') + ' x ' + (product.width || '-') + ' x ' + (product.height || '-') + ' mm';
+document.getElementById('specMadeIn').textContent = product.made_in || '-';
+document.getElementById('specPrint').textContent = product.finishings || '-';
+document.getElementById('specTime').textContent = (product.delivery_time_min || '-') + '-' + (product.delivery_time_max || '-') + ' days';
+
+// Prices - two rows
+document.getElementById('price1').textContent = (product.price1 || '-').toFixed(2);
+document.getElementById('price2').textContent = (product.price2 || '-').toFixed(2);
+document.getElementById('price3').textContent = (product.price3 || '-').toFixed(2);
+document.getElementById('price4').textContent = (product.price4 || '-').toFixed(2);
+document.getElementById('price5').textContent = (product.price5 || '-').toFixed(2);
+
+document.getElementById('quoteQty').value = 50;
+
+// Images
+document.getElementById('mainImage').src = product.images1 || 'https://via.placeholder.com/600x600';
+let images = [product.images1, product.images2].filter(i => i);
+document.getElementById('thumbList').innerHTML = images.map((img, i) => 
+  '<div class="thumb ' + (i===0?'active':'') + '" onclick="changeImage(this)"><img src="' + img + '"></div>'
+).join('');
+
+function changeImage(thumb) {
+  document.getElementById('mainImage').src = thumb.querySelector('img').src;
+  document.querySelectorAll('.thumb').forEach(t => t.classList.remove('active'));
+  thumb.classList.add('active');
 }
 
-function formatPrice(p) {
-    return p ? '£' + parseFloat(p).toFixed(2) : '-';
-}
+// Related Products - fixed logic: same category first, then by product_number order
+const currentIdx = productsData.findIndex(p => p.product_number === product.product_number);
+let relatedProducts = [];
 
-function loadCart() {
-    cart = JSON.parse(localStorage.getItem('44promo_cart') || '[]');
-    updateCartCount();
-}
-
-function saveCart() {
-    localStorage.setItem('44promo_cart', JSON.stringify(cart));
-    updateCartCount();
-}
-
-function updateCartCount() {
-    var el = document.getElementById('cartCount');
-    if (el) el.textContent = cart.length;
-}
-
-function renderCategoriesInDetail() {
-    var nav = document.getElementById('categoryNav');
-    var footerCat = document.getElementById('footerCategories');
-    if (!nav) return;
-    
-    var catCounts = [];
-    for (var c in categories) catCounts.push({name: c, count: categories[c]});
-    catCounts.sort(function(a, b) { return b.count - a.count; });
-    
-    var navHtml = '<li class="nav-item"><a class="nav-link" href="index.html">All Products</a></li>';
-    for (var i = 0; i < 8 && i < catCounts.length; i++) {
-        navHtml += '<li class="nav-item"><a class="nav-link" href="index.html?category=' + encodeURIComponent(catCounts[i].name) + '">' + catCounts[i].name + '</a></li>';
+// 1. Get same category products
+const sameCat = productsData.filter(p => p.category === product.category && p.product_number !== product.product_number);
+if (sameCat.length >= 3) {
+  relatedProducts = sameCat.slice(0, 3);
+} else {
+  // 2. Add from same category
+  relatedProducts = sameCat;
+  // 3. If not enough, add from other categories by order
+  const others = productsData.filter(p => p.product_number !== product.product_number);
+  for (let i = 0; relatedProducts.length < 3 && i < others.length; i++) {
+    if (!relatedProducts.find(p => p.product_number === others[i].product_number)) {
+      relatedProducts.push(others[i]);
     }
-    nav.innerHTML = navHtml;
-    
-    var footerHtml = '';
-    for (var i = 0; i < 8 && i < catCounts.length; i++) {
-        footerHtml += '<li><a href="index.html?category=' + encodeURIComponent(catCounts[i].name) + '">' + catCounts[i].name + '</a></li>';
-    }
-    footerCat.innerHTML = footerHtml;
+  }
 }
 
-function setRequestType(type) {
-    document.getElementById('reqProductId').value = currentProduct.id;
-    document.getElementById('reqProductName').value = currentProduct.name;
-    document.getElementById('reqType').value = type;
-    document.getElementById('requestModalTitle').textContent = type === 'info' ? 'Request Info' : 'Request Quote';
+document.getElementById('relatedProducts').innerHTML = relatedProducts.map(p => 
+  '<div class="col-4"><div class="related-card" onclick="location.href=\'product-detail.html?id=' + p.product_number + '\'">' +
+  '<img src="' + (p.images1 || 'https://via.placeholder.com/100x100') + '" alt="' + p.name + '">' +
+  '<div class="related-name">' + p.name + '</div>' +
+  '<div class="related-price">£' + (p.price1 || '-') + '</div></div></div>'
+).join('');
+
+function submitQuote(e) {
+  e.preventDefault();
+  alert('Thank you for your quote request! We will contact you within 24 hours.');
 }
 
-document.getElementById('requestForm').onsubmit = function(e) {
-    e.preventDefault();
-    var form = document.getElementById('requestForm');
-    var formData = new FormData(form);
-    var data = Object.fromEntries(formData);
-    data.productId = currentProduct.id;
-    data.productName = currentProduct.name;
-    
-    // Call API to send email
-    fetch('/api/send-email', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
-    })
-    .then(function(response) { return response.json(); })
-    .then(function(result) {
-        if (result.success) {
-            alert('Thank you! Your request has been sent to info@44promotions.co.uk');
-            bootstrap.Modal.getInstance(document.getElementById('requestModal')).hide();
-            form.reset();
-        } else {
-            alert('Error: ' + result.error);
-        }
-    })
-    .catch(function(error) {
-        console.error('Error:', error);
-        alert('Failed to send request. Please try again or email us directly.');
-    });
-};
-
-function addToCart() {
-    var qty = document.getElementById('qty').value;
-    if (!qty || qty < 1) { alert('Please enter quantity'); return; }
-    var color = document.getElementById('colorSelect').value;
-    cart.push({id: currentProduct.id, name: currentProduct.name, qty: qty, color: color});
-    saveCart();
-    alert('Added to cart!');
-}
-
-function showNotFound() {
-    document.getElementById('loading').style.display = 'none';
-    document.getElementById('notFound').style.display = 'block';
-}
-
-async function loadProduct() {
-    var pid = getProductId();
-    if (!pid) { showNotFound(); return; }
-    
-    try {
-        var response = await fetch('products.json?v=' + Date.now());
-        products = await response.json();
-        
-        for (var i = 0; i < products.length; i++) {
-            var cat = products[i].category || 'Other';
-            categories[cat] = (categories[cat] || 0) + 1;
-        }
-        renderCategoriesInDetail();
-        
-        currentProduct = products.find(function(p) { return p.id == pid; });
-        if (!currentProduct) { showNotFound(); return; }
-        
-        renderProduct();
-        loadCart();
-    } catch(e) {
-        console.error(e);
-        document.getElementById('loading').innerHTML = '<p>Error: ' + e.message + '</p><button onclick="loadProduct()" class="btn btn-add-cart">Retry</button>';
-    }
-}
-
-function renderProduct() {
-    var p = currentProduct;
-    document.title = p.name + ' - 44Promotions';
-    
-    var breadcrumb = document.getElementById('breadcrumb');
-    breadcrumb.innerHTML = '<li class="breadcrumb-item"><a href="index.html">Home</a></li><li class="breadcrumb-item"><a href="index.html?category=' + encodeURIComponent(p.category) + '">' + p.category + '</a></li><li class="breadcrumb-item active">' + p.name + '</li>';
-    
-    document.getElementById('productName').textContent = p.name;
-    document.getElementById('itemNum').textContent = p.id;
-    
-    var mainImg = document.getElementById('mainImage');
-    mainImg.src = (p.images && p.images.main) ? p.images.main.replace('&w=1800', '&w=600') : 'https://via.placeholder.com/400';
-    mainImg.onerror = function() { this.src = 'https://via.placeholder.com/400?text=No+Image'; };
-    
-    var thumbs = document.getElementById('thumbnails');
-    thumbs.innerHTML = '';
-    
-    if (p.images && p.images.main) {
-        var t1 = document.createElement('img');
-        t1.src = p.images.main.replace('&w=1800', '&w=100');
-        t1.className = 'active';
-        t1.onclick = function() {
-            mainImg.src = p.images.main.replace('&w=1800', '&w=600');
-            var allThumbs = document.querySelectorAll('.product-thumbnails img');
-            allThumbs.forEach(function(x) { x.classList.remove('active'); });
-            t1.classList.add('active');
-        };
-        thumbs.appendChild(t1);
-    }
-    
-    if (p.images && p.images.blank) {
-        var t2 = document.createElement('img');
-        t2.src = p.images.blank.replace('&w=1800', '&w=100');
-        t2.onclick = function() {
-            mainImg.src = p.images.blank.replace('&w=1800', '&w=600');
-            var allThumbs = document.querySelectorAll('.product-thumbnails img');
-            allThumbs.forEach(function(x) { x.classList.remove('active'); });
-            t2.classList.add('active');
-        };
-        thumbs.appendChild(t2);
-    }
-    
-    var overview = '<p>' + (p.description || 'No description') + '</p>';
-    if (p.dimensions) {
-        var dims = [];
-        if (p.dimensions.length) dims.push(p.dimensions.length);
-        if (p.dimensions.width) dims.push(p.dimensions.width);
-        if (p.dimensions.height) dims.push(p.dimensions.height);
-        if (dims.length) overview += '<p><strong>Dimensions:</strong> ' + dims.join(' x ') + ' mm</p>';
-    }
-    document.getElementById('overview').innerHTML = overview;
-    document.getElementById('colors').innerHTML = '<p>' + (p.colors || 'N/A') + '</p>';
-    
-    var impHtml = '';
-    if (p.imprint && p.imprint.method) impHtml += '<p><strong>Decoration Method:</strong> ' + p.imprint.method + '</p>';
-    if (p.imprint && p.imprint.included) {
-        var inc = [];
-        if (p.imprint.included.color) inc.push(p.imprint.included.color);
-        if (p.imprint.included.side) inc.push(p.imprint.included.side);
-        if (p.imprint.included.location) inc.push(p.imprint.included.location);
-        if (inc.length) impHtml += '<p><strong>Price includes:</strong> ' + inc.join(', ') + '</p>';
-    }
-    document.getElementById('imprint').innerHTML = impHtml || '<p>N/A</p>';
-    
-    var delHtml = '';
-    if (p.delivery) {
-        if (p.delivery.packaging) delHtml += '<p><strong>Packaging:</strong> ' + p.delivery.packaging + '</p>';
-        if (p.delivery.units) delHtml += '<p><strong>Units Per Carton:</strong> ' + p.delivery.units + ' pcs</p>';
-        if (p.delivery.carton && p.delivery.carton.length) delHtml += '<p><strong>Carton:</strong> ' + p.delivery.carton.length + ' x ' + p.delivery.carton.width + ' x ' + p.delivery.carton.height + ' cm</p>';
-        if (p.delivery.weight) delHtml += '<p><strong>Weight:</strong> ' + p.delivery.weight + '</p>';
-        if (p.delivery.shipPoint) delHtml += '<p><strong>FOB:</strong> ' + p.delivery.shipPoint + '</p>';
-    }
-    document.getElementById('delivery').innerHTML = delHtml || '<p>N/A</p>';
-    
-    var prc = p.pricing || {};
-    var qty = prc.qty || [];
-    var prices = prc.price || [];
-    for (var i = 0; i < 6; i++) {
-        if (qty[i] && prices[i]) {
-            document.getElementById('th' + (i+1)).textContent = qty[i].toLocaleString();
-            document.getElementById('listPrice' + (i+1)).textContent = '£' + prices[i].toFixed(2);
-        } else {
-            document.getElementById('th' + (i+1)).style.display = 'none';
-            document.getElementById('listPrice' + (i+1)).style.display = 'none';
-        }
-    }
-    
-    var setup = '';
-    if (p.imprint) {
-        if (p.imprint.setup) setup += 'Setup: £' + p.imprint.setup + ' ';
-        if (p.imprint.repeat) setup += 'Repeat: £' + p.imprint.repeat + ' ';
-        if (p.imprint.addColor) setup += 'Additional Color/Location Setup: £' + p.imprint.addColor;
-    }
-    document.getElementById('setupInfo').textContent = setup || 'Additional charges may apply.';
-    
-    var sel = document.getElementById('colorSelect');
-    sel.innerHTML = '<option value="">Select</option>';
-    if (p.colors) {
-        p.colors.split(',').forEach(function(c) {
-            sel.innerHTML += '<option value="' + c.trim() + '">' + c.trim() + '</option>';
-        });
-    }
-    
-    document.getElementById('loading').style.display = 'none';
-    document.getElementById('productContent').style.display = 'block';
-}
-
-document.getElementById('logoutBtn').onclick = function() {
-    localStorage.removeItem('44promo_user');
-    document.getElementById('signInBtn').style.display = 'block';
-    document.getElementById('userBtn').style.display = 'none';
-    document.getElementById('logoutBtn').style.display = 'none';
-    alert('Logged out');
-};
-
-document.getElementById('authModal').addEventListener('shown.bs.modal', function() {
-    var user = JSON.parse(localStorage.getItem('44promo_user') || '{}');
-    if (user.isLoggedIn) {
-        document.getElementById('signInBtn').style.display = 'none';
-        document.getElementById('userBtn').style.display = 'block';
-        document.getElementById('logoutBtn').style.display = 'block';
-        document.getElementById('userName').textContent = user.name;
-    }
-});
-
-function handleLogin() {
-    var email = document.getElementById('loginEmail').value;
-    var pwd = document.getElementById('loginPassword').value;
-    if (!email || !pwd) { alert('Please enter email and password'); return; }
-    var user = {name: email.split('@')[0], email: email, isLoggedIn: true};
-    localStorage.setItem('44promo_user', JSON.stringify(user));
-    document.getElementById('signInBtn').style.display = 'none';
-    document.getElementById('userBtn').style.display = 'block';
-    document.getElementById('logoutBtn').style.display = 'block';
-    document.getElementById('userName').textContent = user.name;
-    bootstrap.Modal.getInstance(document.getElementById('authModal')).hide();
-    alert('Logged in!');
-}
-
-function handleRegister() {
-    var company = document.getElementById('regCompany').value;
-    var email = document.getElementById('regEmail').value;
-    var pwd = document.getElementById('regPassword').value;
-    var phone = document.getElementById('regPhone').value;
-    if (!email || !pwd) { alert('Please enter email and password'); return; }
-    var user = {name: company || email.split('@')[0], email: email, company: company, isLoggedIn: true, registered: true};
-    localStorage.setItem('44promo_user', JSON.stringify(user));
-    fetch('/api/register', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ company: company, email: email, phone: phone, name: user.name })
-    })
-    .then(function(res) { return res.json(); })
-    .then(function(result) {
-        document.getElementById('signInBtn').style.display = 'none';
-        document.getElementById('userBtn').style.display = 'block';
-        document.getElementById('logoutBtn').style.display = 'block';
-        document.getElementById('userName').textContent = user.name;
-        bootstrap.Modal.getInstance(document.getElementById('authModal')).hide();
-        alert('Registration submitted! We will contact you shortly.');
-    })
-    .catch(function(err) {
-        document.getElementById('signInBtn').style.display = 'none';
-        document.getElementById('userBtn').style.display = 'block';
-        document.getElementById('logoutBtn').style.display = 'block';
-        document.getElementById('userName').textContent = user.name;
-        bootstrap.Modal.getInstance(document.getElementById('authModal')).hide();
-        alert('Registration saved! We will contact you shortly.');
-    });
-}
-
-function shareProduct() {
-    if (navigator.share) {
-        navigator.share({title: currentProduct.name, text: 'Check this', url: location.href});
-    } else {
-        navigator.clipboard.writeText(location.href).then(function() { alert('Link copied!'); });
-    }
-}
-
-function emailProduct() {
-    location.href = 'mailto:?subject=' + encodeURIComponent(currentProduct.name) + '&body=' + encodeURIComponent(location.href);
-}
-
-loadProduct();
+document.title = product.name + ' - ABSPromo';
 </script>
 </body>
 </html>

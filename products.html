@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Products - ABSPromo | Promotional Products UK</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Poppins', sans-serif; background: #f8f9fa; }
+h1, h2, h3, h4, h5, h6 { font-weight: 700; }
+a { text-decoration: none; color: inherit; }
+img { max-width: 100%; }
+
+/* Top Bar */
+.top-bar { background: #1c3f87; color: #fff; padding: 8px 0; font-size: 13px; }
+.top-bar a { color: #fff; }
+
+/* Header */
+header { background: #fff; box-shadow: 0 2px 10px rgba(0,0,0,0.08); }
+.logo-text { font-size: 28px; font-weight: 700; color: #1c3f87; }
+.logo-text span { color: #f4c542; }
+.search-box { flex: 1; max-width: 400px; position: relative; }
+.search-box input { width: 100%; padding: 12px 45px 12px 20px; border: 1px solid #ddd; border-radius: 25px; outline: none; }
+.search-box button { position: absolute; right: 5px; top: 50%; transform: translateY(-50%); background: #1c3f87; border: none; color: #fff; width: 35px; height: 35px; border-radius: 50%; cursor: pointer; }
+.header-actions a { color: #333; font-size: 14px; font-weight: 500; }
+
+/* Navigation */
+.navbar { background: #1c3f87 !important; padding: 0; }
+.navbar-dark .navbar-nav .nav-link { color: #fff !important; padding: 15px 20px; font-weight: 500; text-transform: uppercase; font-size: 13px; }
+.navbar-dark .navbar-nav .nav-link:hover { background: rgba(255,255,255,0.1); }
+
+/* Breadcrumb */
+.breadcrumb-section { background: #fff; padding: 15px 0; border-bottom: 1px solid #eee; }
+.breadcrumb { margin: 0; background: none; }
+.breadcrumb a { color: #1c3f87; }
+.breadcrumb-item.active { color: #666; }
+
+/* Sidebar */
+.sidebar { background: #fff; border-radius: 10px; padding: 20px; margin-bottom: 20px; }
+.sidebar h5 { color: #1c3f87; margin-bottom: 15px; font-size: 16px; }
+.category-list { list-style: none; padding: 0; }
+.category-list li { margin-bottom: 8px; }
+.category-list li a { color: #555; font-size: 14px; display: flex; justify-content: space-between; padding: 8px 12px; border-radius: 5px; }
+.category-list li a:hover, .category-list li a.active { background: #1c3f87; color: #fff; }
+.category-list li a span { opacity: 0.7; font-size: 12px; }
+
+.filter-group { margin-bottom: 20px; }
+.filter-group h6 { color: #333; font-size: 14px; margin-bottom: 10px; }
+.filter-group label { color: #555; font-size: 13px; display: block; margin-bottom: 8px; cursor: pointer; }
+
+/* Products Grid */
+.products-section { padding: 30px 0; }
+.products-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; background: #fff; padding: 15px 20px; border-radius: 10px; }
+.products-header select { padding: 8px 15px; border: 1px solid #ddd; border-radius: 5px; }
+
+.product-card { background: #fff; border-radius: 10px; overflow: hidden; margin-bottom: 20px; transition: all 0.3s; border: 1px solid #eee; height: 100%; }
+.product-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+.product-card .product-img { height: 180px; display: flex; align-items: center; justify-content: center; background: #fff; padding: 15px; border-bottom: 1px solid #f0f0f0; }
+.product-card .product-img img { max-width: 100%; max-height: 100%; object-fit: contain; }
+.product-card .product-info { padding: 15px; }
+.product-card .product-name { color: #333; font-weight: 600; font-size: 13px; margin-bottom: 8px; line-height: 1.4; height: 36px; overflow: hidden; }
+.product-card .product-price { color: #1c3f87; font-weight: 700; font-size: 15px; margin-bottom: 5px; }
+.product-card .min-qty { color: #888; font-size: 11px; }
+.product-card .product-actions { margin-top: 10px; display: flex; gap: 8px; }
+.product-card .btn-view { background: #1c3f87; color: #fff; border: none; padding: 8px 15px; border-radius: 5px; font-size: 12px; flex: 1; }
+.product-card .btn-quote { background: #f4c542; color: #1c3f87; border: none; padding: 8px 15px; border-radius: 5px; font-size: 12px; font-weight: 600; }
+
+/* Footer */
+footer { background: #1c3f87; color: #fff; padding: 40px 0 15px; }
+footer h5 { color: #f4c542; margin-bottom: 15px; }
+footer ul { list-style: none; padding: 0; }
+footer ul li { margin-bottom: 8px; }
+footer ul li a { color: rgba(255,255,255,0.8); font-size: 13px; }
+footer .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); margin-top: 20px; padding-top: 15px; text-align: center; font-size: 12px; }
+</style>
+</head>
+<body>
+
+<!-- Top Bar -->
+<div class="top-bar">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-6">
+        <a href="tel:+442476981030"><i class="fas fa-phone me-2"></i>+44 247 698 1030</a>
+        <span class="mx-2">|</span>
+        <a href="mailto:Info@abspromo.co.uk"><i class="fas fa-envelope me-2"></i>Info@abspromo.co.uk</a>
+      </div>
+      <div class="col-md-6 text-md-end">
+        <a href="#"><i class="fab fa-facebook-f me-2"></i></a>
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Header -->
+<header>
+  <div class="container py-3">
+    <div class="row align-items-center">
+      <div class="col-md-3">
+        <a href="index.html" class="logo-text">ABS<span>Promo</span></a>
+      </div>
+      <div class="col-md-5">
+        <div class="search-box">
+          <input type="text" placeholder="Search products..." id="searchInput">
+          <button onclick="searchProducts()"><i class="fas fa-search"></i></button>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="d-flex justify-content-end gap-3">
+          <a href="#"><i class="far fa-user"></i> Account</a>
+          <a href="#"><i class="fas fa-shopping-cart"></i> Cart</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark">
+  <div class="container">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="products.html">Products</a></li>
+        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Breadcrumb -->
+<div class="breadcrumb-section">
+  <div class="container">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+        <li class="breadcrumb-item active">Products</li>
+      </ol>
+    </nav>
+  </div>
+</div>
+
+<!-- Products Section -->
+<section class="products-section">
+  <div class="container">
+    <div class="row">
+      <!-- Sidebar -->
+      <div class="col-lg-3">
+        <!-- Categories -->
+        <div class="sidebar">
+          <h5><i class="fas fa-th-large me-2"></i>Categories</h5>
+          <ul class="category-list" id="categoryList">
+            <li><a href="#" class="active" onclick="filterCategory('all')">All Products</a></li>
+            <li><a href="#" onclick="filterCategory('drinkware')">Drinkware</a></li>
+            <li><a href="#" onclick="filterCategory('bags')">Bags & Backpacks</a></li>
+            <li><a href="#" onclick="filterCategory('tech')">Tech & Electronics</a></li>
+            <li><a href="#" onclick="filterCategory('office')">Office & Stationery</a></li>
+            <li><a href="#" onclick="filterCategory('home')">Home & Kitchen</a></li>
+            <li><a href="#" onclick="filterCategory('sports')">Sports & Outdoors</a></li>
+            <li><a href="#" onclick="filterCategory('beauty')">Health & Beauty</a></li>
+            <li><a href="#" onclick="filterCategory('automotive')">Automotive</a></li>
+            <li><a href="#" onclick="filterCategory('toys')">Toys & Games</a></li>
+            <li><a href="#" onclick="filterCategory('apparel')">Clothing & Apparel</a></li>
+            <li><a href="#" onclick="filterCategory('accessories')">Accessories</a></li>
+            <li><a href="#" onclick="filterCategory('pet')">Pet Supplies</a></li>
+            <li><a href="#" onclick="filterCategory('other')">Other</a></li>
+          </ul>
+        </div>
+        
+        <!-- Price Filter -->
+        <div class="sidebar">
+          <h5><i class="fas fa-filter me-2"></i>Price Range</h5>
+          <div class="filter-group">
+            <label><input type="checkbox"> Under £1</label>
+            <label><input type="checkbox"> £1 - £5</label>
+            <label><input type="checkbox"> £5 - £10</label>
+            <label><input type="checkbox"> £10 - £20</label>
+            <label><input type="checkbox"> Over £20</label>
+          </div>
+        </div>
+        
+        <!-- Min Qty -->
+        <div class="sidebar">
+          <h5><i class="fas fa-box me-2"></i>Min Quantity</h5>
+          <div class="filter-group">
+            <label><input type="checkbox"> 1-50</label>
+            <label><input type="checkbox"> 51-100</label>
+            <label><input type="checkbox"> 101-500</label>
+            <label><input type="checkbox"> 500+</label>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Products Grid -->
+      <div class="col-lg-9">
+        <div class="products-header">
+          <span id="productCount">Showing all products</span>
+          <div>
+            <label class="me-2">Sort by:</label>
+            <select id="sortSelect" onchange="sortProducts()">
+              <option value="popular">Popular</option>
+              <option value="price-low">Price: Low to High</option>
+              <option value="price-high">Price: High to Low</option>
+              <option value="name">Name: A-Z</option>
+            </select>
+          </div>
+        </div>
+        
+        <div class="row g-3" id="productsGrid">
+          <!-- Products will be loaded here -->
+        </div>
+        
+        <!-- Pagination -->
+        <nav class="mt-4">
+          <ul class="pagination justify-content-center" id="pagination"></ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <h5>ABSPromo</h5>
+        <p style="font-size:13px;opacity:0.8;">Your trusted partner for promotional products in the UK.</p>
+      </div>
+      <div class="col-md-4">
+        <h5>Quick Links</h5>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <h5>Contact</h5>
+        <ul>
+          <li><i class="fas fa-map-marker-alt me-2"></i>7 Copperfield Road, Coventry, UK CV2 4AQ</li>
+          <li><i class="fas fa-phone me-2"></i>+44 247 698 1030</li>
+          <li><i class="fas fa-envelope me-2"></i>Info@abspromo.co.uk</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 ABS Promo Co Ltd. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="products_data.js"></script>
+<script>
+let currentCategory = 'all';
+let currentPage = 1;
+const productsPerPage = 12;
+
+function renderProducts() {
+  const grid = document.getElementById('productsGrid');
+  // Show all products - category filter shows all for now
+  let filtered = productsData;
+  
+  const totalPages = Math.ceil(filtered.length / productsPerPage);
+  if (currentPage > totalPages) currentPage = 1;
+  renderPagination(totalPages);
+  const start = (currentPage - 1) * productsPerPage;
+  const pageProducts = filtered.slice(start, start + productsPerPage);
+  
+  grid.innerHTML = pageProducts.map(p => `
+    <div class="col-6 col-md-4 col-lg-4">
+      <div class="product-card">
+        <div class="product-img">
+          <img src="${p.images1 || 'https://via.placeholder.com/300x300'}" alt="${p.name}">
+        </div>
+        <div class="product-info">
+          <div class="product-name">${p.name}</div>
+          <div class="product-price">From £${p.price1 ? p.price1.toFixed(2) : '-'}</div>
+        </div>
+      </div>
+    </div>
+  `).join('');
+  
+  document.getElementById('productCount').textContent = `Showing ${filtered.length} products`;
+}
+
+function filterCategory(cat) {
+  currentCategory = cat;
+  currentPage = 1;
+  document.querySelectorAll('.category-list a').forEach(a => a.classList.remove('active'));
+  event.target.closest('a').classList.add('active');
+  renderProducts();
+}
+
+function changePage(page) {
+  const filtered = productsData;
+  const totalPages = Math.ceil(filtered.length / productsPerPage);
+  if (page < 1 || page > totalPages) return;
+  currentPage = page;
+  renderProducts();
+}
+
+function renderPagination(totalPages) {
+  const pagination = document.getElementById('pagination');
+  if (totalPages <= 1) { pagination.innerHTML = ''; return; }
+  
+  let html = '<li class="page-item ' + (currentPage === 1 ? 'disabled' : '') + '">' +
+    '<a class="page-link" href="#" onclick="changePage(' + (currentPage - 1) + ')">‹</a></li>';
+  
+  for (let i = 1; i <= totalPages && i <= 5; i++) {
+    html += '<li class="page-item ' + (currentPage === i ? 'active' : '') + '">' +
+      '<a class="page-link" href="#" onclick="changePage(' + i + ')">' + i + '</a></li>';
+  }
+  
+  html += '<li class="page-item ' + (currentPage === totalPages ? 'disabled' : '') + '">' +
+    '<a class="page-link" href="#" onclick="changePage(' + (currentPage + 1) + ')">›</a></li>';
+  
+  pagination.innerHTML = html;
+}
+
+function viewProduct(id) {
+  window.location.href = `product-detail.html?id=��{id}`;
+}
+
+function requestQuote(id) {
+  window.location.href = `product-detail.html?id=��{id}&action=quote`;
+}
+
+function searchProducts() {
+  const query = document.getElementById('searchInput').value.toLowerCase();
+  const filtered = products.filter(p => p.name.toLowerCase().includes(query));
+  currentCategory = 'all';
+  renderProducts();
+}
+
+function sortProducts() {
+  const sort = document.getElementById('sortSelect').value;
+  // Add sorting logic here
+  renderProducts();
+}
+
+// Initial render
+renderProducts();
+
+// Get category from URL and filter
+const urlParams = new URLSearchParams(window.location.search);
+const urlCategory = urlParams.get('category');
+if (urlCategory) {
+  currentCategory = urlCategory;
+  setTimeout(() => {
+    document.querySelectorAll('.category-list a').forEach(a => {
+      a.classList.remove('active');
+      if (a.getAttribute('onclick') && a.getAttribute('onclick').indexOf("'" + urlCategory + "'") > -1) {
+        a.classList.add('active');
+      }
+    });
+    renderProducts();
+  }, 100);
+}
+</script>
+</body>
+</html>

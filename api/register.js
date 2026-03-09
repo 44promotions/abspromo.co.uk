@@ -17,7 +17,7 @@ module.exports = async function handler(req, res) {
     const smtpUser = process.env.SMTP_USER;
     const smtpPass = process.env.SMTP_PASS;
     const fromEmail = process.env.FROM_EMAIL || smtpUser;
-    const toEmail = process.env.TO_EMAIL || 'info@44promotions.co.uk';
+    const toEmail = process.env.TO_EMAIL || 'info@abspromo.co.uk';
 
     if (!smtpUser || !smtpPass) {
       return res.status(500).json({ error: 'SMTP not configured' });
@@ -50,7 +50,7 @@ module.exports = async function handler(req, res) {
     `;
 
     await transporter.sendMail({
-      from: `"44Promotions" <${fromEmail}>`,
+      from: `"abspromo" <${fromEmail}>`,
       to: toEmail,
       replyTo: email,
       subject: 'New Customer Registration',

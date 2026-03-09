@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Admin - ABSPromo Product Management</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Poppins', sans-serif; background: #f5f7fa; }
+.sidebar { background: #1c3f87; min-height: 100vh; padding: 20px 0; }
+.sidebar h4 { color: #fff; padding: 0 20px; margin-bottom: 30px; }
+.sidebar h4 span { color: #f4c542; }
+.sidebar a { color: rgba(255,255,255,0.8); padding: 12px 20px; display: block; border-left: 3px solid transparent; }
+.sidebar a:hover, .sidebar a.active { background: rgba(255,255,255,0.1); color: #fff; border-left-color: #f4c542; }
+.sidebar a i { margin-right: 10px; width: 20px; }
+.main-content { padding: 30px; }
+.header { background: #fff; padding: 20px 30px; margin: -30px -30px 30px -30px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #eee; }
+.header h3 { color: #1c3f87; margin: 0; }
+.card { background: #fff; border: none; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); margin-bottom: 20px; }
+.card-header { background: none; border-bottom: 1px solid #eee; padding: 15px 20px; font-weight: 600; color: #333; }
+.card-body { padding: 20px; }
+.form-label { font-weight: 500; color: #555; font-size: 14px; margin-bottom: 5px; }
+.form-control { border: 1px solid #ddd; border-radius: 8px; padding: 10px 15px; }
+.form-control:focus { border-color: #1c3f87; box-shadow: none; }
+.btn-primary { background: #1c3f87; border: none; padding: 10px 25px; border-radius: 8px; }
+.btn-primary:hover { background: #2a5ba8; }
+.table { margin-bottom: 0; }
+.table th { background: #f8f9fa; color: #666; font-weight: 600; font-size: 13px; padding: 12px; }
+.table td { padding: 12px; vertical-align: middle; font-size: 14px; }
+.table img { width: 60px; height: 60px; object-fit: cover; border-radius: 5px; }
+.badge { padding: 5px 10px; border-radius: 20px; font-size: 12px; }
+.badge-success { background: #d4edda; color: #155724; }
+.badge-warning { background: #fff3cd; color: #856404; }
+.stats-card { background: #fff; border-radius: 10px; padding: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+.stats-card h2 { color: #1c3f87; font-size: 32px; margin: 0; }
+.stats-card p { color: #666; margin: 5px 0 0 0; font-size: 14px; }
+.upload-area { border: 2px dashed #ddd; border-radius: 10px; padding: 40px; text-align: center; cursor: pointer; transition: all 0.3s; }
+.upload-area:hover { border-color: #1c3f87; background: #f8f9ff; }
+.upload-area i { font-size: 48px; color: #1c3f87; margin-bottom: 15px; }
+</style>
+</head>
+<body>
+
+<div class="container-fluid">
+  <div class="row">
+    <!-- Sidebar -->
+    <div class="col-md-2 sidebar">
+      <h4>ABS<span>Promo</span></h4>
+      <a href="admin.html" class="active"><i class="fas fa-home"></i> Dashboard</a>
+      <a href="admin-products.html"><i class="fas fa-box"></i> Products</a>
+      <a href="admin-upload.html"><i class="fas fa-upload"></i> Upload Products</a>
+      <a href="admin-categories.html"><i class="fas fa-th"></i> Categories</a>
+      <a href="admin-orders.html"><i class="fas fa-shopping-cart"></i> Orders</a>
+      <a href="admin-quotes.html"><i class="fas fa-file-alt"></i> Quote Requests</a>
+      <a href="#"><i class="fas fa-cog"></i> Settings</a>
+      <a href="index.html"><i class="fas fa-arrow-left"></i> Back to Website</a>
+    </div>
+    
+    <!-- Main Content -->
+    <div class="col-md-10 main-content">
+      <div class="header">
+        <h3>Product Upload</h3>
+        <div>
+          <span class="me-3">Welcome, Admin</span>
+          <i class="fas fa-user-circle fa-lg"></i>
+        </div>
+      </div>
+      
+      <!-- Upload Options -->
+      <div class="row g-4 mb-4">
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-header">Upload from Excel/CSV</div>
+            <div class="card-body">
+              <div class="upload-area" onclick="document.getElementById('excelFile').click()">
+                <i class="fas fa-file-excel"></i>
+                <h5>Click to upload Excel file</h5>
+                <p class="text-muted mb-0">Supports .xlsx, .xls, .csv format</p>
+                <input type="file" id="excelFile" accept=".xlsx,.xls,.csv" style="display:none" onchange="handleFileUpload(this)">
+              </div>
+              <div id="uploadStatus" class="mt-3"></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-header">Add Single Product</div>
+            <div class="card-body">
+              <form id="singleProductForm" onsubmit="addSingleProduct(event)">
+                <div class="row g-3">
+                  <div class="col-12">
+                    <label class="form-label">Product Name *</label>
+                    <input type="text" class="form-control" id="pName" required>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">SKU/Product Number *</label>
+                    <input type="text" class="form-control" id="pSku" required>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">Category *</label>
+                    <select class="form-control" id="pCategory" required>
+                      <option value="">Select category</option>
+                      <option value="drinkware">Drinkware</option>
+                      <option value="bags">Bags & Backpacks</option>
+                      <option value="tech">Tech & Electronics</option>
+                      <option value="office">Office & Stationery</option>
+                      <option value="home">Home & Kitchen</option>
+                      <option value="sports">Sports & Outdoors</option>
+                      <option value="beauty">Health & Beauty</option>
+                      <option value="automotive">Automotive</option>
+                      <option value="apparel">Clothing & Apparel</option>
+                      <option value="other">Other</option>
+                    </select>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">Price *</label>
+                    <input type="text" class="form-control" id="pPrice" placeholder="From $X.XX" required>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">Min Quantity *</label>
+                    <input type="number" class="form-control" id="pMinQty" min="1" required>
+                  </div>
+                  <div class="col-12">
+                    <label class="form-label">Description</label>
+                    <textarea class="form-control" id="pDesc" rows="3"></textarea>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">Material</label>
+                    <input type="text" class="form-control" id="pMaterial">
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">Colors Available</label>
+                    <input type="text" class="form-control" id="pColors" placeholder="White, Black, Blue">
+                  </div>
+                  <div class="col-12">
+                    <label class="form-label">Product Image URL</label>
+                    <input type="url" class="form-control" id="pImage" placeholder="https://...">
+                  </div>
+                  <div class="col-12">
+                    <button type="submit" class="btn btn-primary">Add Product</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Recent Uploads -->
+      <div class="card">
+        <div class="card-header">Recent Products</div>
+        <div class="card-body">
+          <table class="table" id="recentProductsTable">
+            <thead>
+              <tr>
+                <th>Image</th>
+                <th>Name</th>
+                <th>SKU</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th>Min Qty</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="productsTableBody">
+              <!-- Products will be listed here -->
+            </tbody>
+          </table>
+          <p id="noProducts" class="text-center text-muted py-4">No products yet. Upload your first product above.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+// Store products in localStorage (in production, use database)
+let products = JSON.parse(localStorage.getItem('abspromo_products') || '[]');
+
+function renderProducts() {
+  const tbody = document.getElementById('productsTableBody');
+  const noProducts = document.getElementById('noProducts');
+  
+  if (products.length === 0) {
+    tbody.innerHTML = '';
+    noProducts.style.display = 'block';
+    return;
+  }
+  
+  noProducts.style.display = 'none';
+  tbody.innerHTML = products.map(p => `
+    <tr>
+      <td><img src="${p.image || 'https://via.placeholder.com/60'}" alt="${p.name}"></td>
+      <td>${p.name}</td>
+      <td>${p.sku}</td>
+      <td>${p.category}</td>
+      <td>${p.price}</td>
+      <td>${p.minQty}</td>
+      <td><span class="badge badge-success">Active</span></td>
+    </tr>
+  `).join('');
+}
+
+function handleFileUpload(input) {
+  const file = input.files[0];
+  if (!file) return;
+  
+  const status = document.getElementById('uploadStatus');
+  status.innerHTML = `<div class="alert alert-info"><i class="fas fa-spinner fa-spin me-2"></i>Processing ${file.name}...</div>`;
+  
+  // In production, this would parse the Excel file
+  // For now, simulate processing
+  setTimeout(() => {
+    status.innerHTML = `<div class="alert alert-success"><i class="fas fa-check me-2"></i>Successfully processed ${file.name}! Added 0 products.</div>`;
+  }, 2000);
+}
+
+function addSingleProduct(e) {
+  e.preventDefault();
+  
+  const product = {
+    name: document.getElementById('pName').value,
+    sku: document.getElementById('pSku').value,
+    category: document.getElementById('pCategory').value,
+    price: document.getElementById('pPrice').value,
+    minQty: document.getElementById('pMinQty').value,
+    description: document.getElementById('pDesc').value,
+    material: document.getElementById('pMaterial').value,
+    colors: document.getElementById('pColors').value,
+    image: document.getElementById('pImage').value,
+    addedAt: new Date().toISOString()
+  };
+  
+  products.push(product);
+  localStorage.setItem('abspromo_products', JSON.stringify(products));
+  
+  document.getElementById('singleProductForm').reset();
+  renderProducts();
+  
+  alert('Product added successfully!');
+}
+
+// Initial render
+renderProducts();
+</script>
+</body>
+</html>

@@ -20,7 +20,7 @@ module.exports = async function handler(req, res) {
     const smtpUser = process.env.SMTP_USER;
     const smtpPass = process.env.SMTP_PASS;
     const fromEmail = process.env.FROM_EMAIL || smtpUser;
-    const toEmail = process.env.TO_EMAIL || 'info@44promotions.co.uk';
+    const toEmail = process.env.TO_EMAIL || 'info@abspromo.co.uk';
 
     if (!smtpUser || !smtpPass) {
       return res.status(500).json({ error: 'SMTP not configured. Please contact administrator.' });
@@ -70,12 +70,12 @@ module.exports = async function handler(req, res) {
           <td style="padding: 10px; border: 1px solid #ddd;">${message.replace(/\n/g, '<br>')}</td>
         </tr>
       </table>
-      <p style="margin-top: 20px; color: #666; font-size: 12px;">This email was sent from 44Promotions.co.uk</p>
+      <p style="margin-top: 20px; color: #666; font-size: 12px;">This email was sent from abspromo.co.uk</p>
     `;
 
     // Send email
     await transporter.sendMail({
-      from: `"44Promotions" <${fromEmail}>`,
+      from: `"abspromo" <${fromEmail}>`,
       to: toEmail,
       replyTo: email,
       subject: subject,
