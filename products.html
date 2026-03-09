@@ -307,11 +307,11 @@ footer .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); margin-top:
         <div class="sidebar">
           <h5><i class="fas fa-filter me-2"></i>Price Range</h5>
           <div class="filter-group">
-            <label><input type="checkbox"> Under £1</label>
-            <label><input type="checkbox"> £1 - £5</label>
-            <label><input type="checkbox"> £5 - £10</label>
-            <label><input type="checkbox"> £10 - £20</label>
-            <label><input type="checkbox"> Over £20</label>
+            <label><input type="checkbox" onchange="applyFilters()"> Under £1</label>
+            <label><input type="checkbox" onchange="applyFilters()"> £1 - £5</label>
+            <label><input type="checkbox" onchange="applyFilters()"> £5 - £10</label>
+            <label><input type="checkbox" onchange="applyFilters()"> £10 - £20</label>
+            <label><input type="checkbox" onchange="applyFilters()"> Over £20</label>
           </div>
         </div>
         
@@ -319,10 +319,10 @@ footer .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); margin-top:
         <div class="sidebar">
           <h5><i class="fas fa-box me-2"></i>Min Quantity</h5>
           <div class="filter-group">
-            <label><input type="checkbox"> 1-50</label>
-            <label><input type="checkbox"> 51-100</label>
-            <label><input type="checkbox"> 101-500</label>
-            <label><input type="checkbox"> 500+</label>
+            <label><input type="checkbox" onchange="applyFilters()"> 1-50</label>
+            <label><input type="checkbox" onchange="applyFilters()"> 51-100</label>
+            <label><input type="checkbox" onchange="applyFilters()"> 101-500</label>
+            <label><input type="checkbox" onchange="applyFilters()"> 500+</label>
           </div>
         </div>
       </div>
@@ -396,10 +396,27 @@ const productsPerPage = 12;
 
 function renderProducts() {
   const grid = document.getElementById('productsGrid');
-  // Show all products - category filter shows all for now
+  
+  // Start with category filter
   let filtered = currentCategory === 'all' 
     ? productsData 
     : productsData.filter(p => getProductCategory(p) === currentCategory);
+  
+  // Apply price range filter
+  const priceCheckboxes = document.querySelectorAll('.filter-group input[type="checkbox"]');
+  const selectedPriceRanges = [];
+  if (priceCheckboxes[0].checked) selectedPriceRanges.push({min: 0, max: 1});
+  if (priceCheckboxes[1].checked) selectedPriceRanges.push({min: 1, max: 5});
+  if (priceCheckboxes[2].checked) selectedPriceRanges.push({min: 5, max: 10});
+  if (priceCheckboxes[3].checked) selectedPriceRanges.push({min: 10, max: 20});
+  if (priceCheckboxes[4].checked) selectedPriceRanges.push({min: 20, max: Infinity});
+  
+  if (selectedPriceRanges.length > 0) {
+    filtered = filtered.filter(p => {
+      const price = p.price1 || 0;
+      return selectedPriceRanges.some(r => price >= r.min && price < r.max);
+    });
+  }
   
   const totalPages = Math.ceil(filtered.length / productsPerPage);
   if (currentPage > totalPages) currentPage = 1;
@@ -527,6 +544,11 @@ function getProductCategory(product) {
   if (text.match(/pet|dog|cat|animal/)) return 'pet';
   
   return 'other';
+}
+
+function applyFilters() {
+  currentPage = 1;
+  renderProducts();
 }
 
 function changePage(page) {
