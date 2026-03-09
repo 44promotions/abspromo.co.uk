@@ -160,10 +160,20 @@ footer .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); margin-top:
           <ul class="category-list" id="categoryList">
             <li><a href="#" class="active" onclick="filterCategory('all')">All Products</a></li>
             <li><a href="#" onclick="filterCategory('drinkware')">Drinkware</a></li>
-            <li><a href="#" onclick="filterCategory('bags')">Bags & Backpacks</a></li>
-            <li><a href="#" onclick="filterCategory('apparel')">Apparel & Clothing</a></li>
+            <li><a href="#" onclick="filterCategory('mugs')">Mugs</a></li>
+            <li><a href="#" onclick="filterCategory('bottles')">Bottles</a></li>
+            <li><a href="#" onclick="filterCategory('cups')">Cups & Glasses</a></li>
+            <li><a href="#" onclick="filterCategory('bags')">Bags</a></li>
+            <li><a href="#" onclick="filterCategory('backpacks')">Backpacks</a></li>
+            <li><a href="#" onclick="filterCategory('apparel')">Apparel</a></li>
+            <li><a href="#" onclick="filterCategory('caps-hats')">Caps & Hats</a></li>
+            <li><a href="#" onclick="filterCategory('shirts')">Shirts</a></li>
             <li><a href="#" onclick="filterCategory('tech')">Tech & Electronics</a></li>
-            <li><a href="#" onclick="filterCategory('office')">Office & Stationery</a></li>
+            <li><a href="#" onclick="filterCategory('usb-drives')">USB Drives</a></li>
+            <li><a href="#" onclick="filterCategory('power-banks')">Power Banks</a></li>
+            <li><a href="#" onclick="filterCategory('office')">Office</a></li>
+            <li><a href="#" onclick="filterCategory('pens')">Pens</a></li>
+            <li><a href="#" onclick="filterCategory('notebooks')">Notebooks</a></li>
             <li><a href="#" onclick="filterCategory('home')">Home & Kitchen</a></li>
             <li><a href="#" onclick="filterCategory('sports')">Sports & Outdoors</a></li>
             <li><a href="#" onclick="filterCategory('automotive')">Automotive</a></li>
@@ -303,23 +313,83 @@ function filterCategory(cat) {
   renderProducts();
 }
 
-// Category mapping based on keywords
+// Category mapping based on keywords - more specific categories
 function getProductCategory(product) {
   const name = (product.name || '').toLowerCase();
   const desc = (product.description || '').toLowerCase();
   const text = name + ' ' + desc;
   
-  if (text.match(/mug|cup|glass|bottle|tumbler|thermos|flask|water|drink|coffee|tea/)) return 'drinkware';
-  if (text.match(/bag|backpack|tote|pouch|wallet|purse|handbag/)) return 'bags';
-  if (text.match(/shirt|jacket|coat|hoodie|cap|hat|scarf|glove|sock|vest|polo|tshirt|apparel|clothing/)) return 'apparel';
-  if (text.match(/usb|charger|cable|speaker|headphone|power bank|mouse|keyboard|led|light|clock|tech|electronic/)) return 'tech';
+  // Drinkware
+  if (text.match(/bottle|water bottle|sport bottle|vacuum flask|thermos/)) return 'bottles';
+  if (text.match(/mug|coffee mug|tea mug|ceramic mug/)) return 'mugs';
+  if (text.match(/cup|glass|tumbler|coffee cup|tea cup|wine glass/)) return 'cups';
+  if (text.match(/mug|cup|bottle|glass|tumbler|thermos|flask|water|drink|coffee|tea/)) return 'drinkware';
+  
+  // Bags
+  if (text.match(/backpack|school bag/)) return 'backpacks';
+  if (text.match(/tote bag|canvas tote/)) return 'tote-bags';
+  if (text.match(/bag|shopping bag/)) return 'bags';
+  if (text.match(/pouch|coin pouch/)) return 'pouches';
+  if (text.match(/wallet|purse|handbag/)) return 'wallets';
+  
+  // Apparel
+  if (text.match(/cap|baseball cap|hat/)) return 'caps-hats';
+  if (text.match(/t-shirt|tshirt|polo shirt|shirt/)) return 'shirts';
+  if (text.match(/jacket|coat|hoodie|sweater/)) return 'jackets';
+  if (text.match(/glove|scarf|sock|vest/)) return 'accessories';
+  if (text.match(/shirt|jacket|coat|hoodie|cap|hat|scarf|glove|sock|vest|polo|tshirt|apparel|clothing|uniform/)) return 'apparel';
+  
+  // Tech
+  if (text.match(/usb|usb drive|usb stick/)) return 'usb-drives';
+  if (text.match(/power bank|battery pack/)) return 'power-banks';
+  if (text.match(/speaker|bluetooth speaker/)) return 'speakers';
+  if (text.match(/headphone|earphone|earbud/)) return 'audio';
+  if (text.match(/charger|phone charger|usb charger/)) return 'chargers';
+  if (text.match(/cable|usb cable|charging cable/)) return 'cables';
+  if (text.match(/mouse|keyboard/)) return 'computer-accessories';
+  if (text.match(/led|light|lamp|flashlight/)) return 'lights';
+  if (text.match(/clock|alarm clock/)) return 'clocks';
+  if (text.match(/usb|charger|cable|speaker|headphone|power bank|mouse|keyboard|led|light|clock|tech|electronic|phone/)) return 'tech';
+  
+  // Office
+  if (text.match(/pen|ballpoint|pencil/)) return 'pens';
+  if (text.match(/notebook|journal|diary/)) return 'notebooks';
+  if (text.match(/folder| binder|organizer/)) return 'office-supplies';
   if (text.match(/pen|notebook|journal|folder|organizer|desk|stationery|office/)) return 'office';
+  
+  // Home & Kitchen
+  if (text.match(/kitchen|cooking|baking/)) return 'kitchen';
+  if (text.match(/apron/)) return 'aprons';
+  if (text.match(/pot|pan|container|storage|box/)) return 'storage';
+  if (text.match(/spoon|fork|utensil/)) return 'utensils';
   if (text.match(/kitchen|cooking|baking|apron|pot|pan|container|storage|box|spoon|fork/)) return 'home';
-  if (text.match(/sport|fitness|gym|yoga|outdoor|camping|hiking|cycling|swim|ball/)) return 'sports';
+  
+  // Sports & Outdoors
+  if (text.match(/yoga|mat/)) return 'yoga';
+  if (text.match(/fitness|gym|exercise/)) return 'fitness';
+  if (text.match(/camping|tent|sleeping bag/)) return 'camping';
+  if (text.match(/outdoor|hiking|cycling/)) return 'outdoor';
+  if (text.match(/ball|football|basketball/)) return 'balls';
+  if (text.match(/sport|fitness|gym|yoga|outdoor|camping|hiking|cycling|swim/)) return 'sports';
+  
+  // Automotive
+  if (text.match(/car mat|floor mat|seat cover/)) return 'car-mats';
+  if (text.match(/car charger|phone holder/)) return 'car-accessories';
   if (text.match(/car|automotive|vehicle|seat|mat|holder/)) return 'automotive';
+  
+  // Beauty
+  if (text.match(/makeup|cosmetic/)) return 'makeup';
+  if (text.match(/brush|mirror/)) return 'beauty-tools';
   if (text.match(/cosmetic|makeup|beauty|hair|brush|mirror|pillow/)) return 'beauty';
+  
+  // Toys & Gifts
+  if (text.match(/plush|teddy|toy/)) return 'toys';
+  if (text.match(/game|puzzle/)) return 'games';
   if (text.match(/toy|game|puzzle|kid|baby/)) return 'toys';
-  if (text.match(/pet|dog|cat|animal|leash|collar|bed/)) return 'pet';
+  
+  // Pet
+  if (text.match(/pet|dog|cat|animal/)) return 'pet';
+  
   return 'other';
 }
 
