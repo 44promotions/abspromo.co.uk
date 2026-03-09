@@ -294,24 +294,19 @@ function changeImage(thumb) {
   thumb.classList.add('active');
 }
 
-// Related Products - fixed logic: same category first, then by product_number order
+// Related Products - show different products for each item based on product order
 const currentIdx = productsData.findIndex(p => p.product_number === product.product_number);
 let relatedProducts = [];
 
-// 1. Get same category products
-const sameCat = productsData.filter(p => p.category === product.category && p.product_number !== product.product_number);
-if (sameCat.length >= 3) {
-  relatedProducts = sameCat.slice(0, 3);
-} else {
-  // 2. Add from same category
-  relatedProducts = sameCat;
-  // 3. If not enough, add from other categories by order
-  const others = productsData.filter(p => p.product_number !== product.product_number);
-  for (let i = 0; relatedProducts.length < 3 && i < others.length; i++) {
-    if (!relatedProducts.find(p => p.product_number === others[i].product_number)) {
-      relatedProducts.push(others[i]);
-    }
-  }
+// Get 3 different products: one before, one after current, and one from middle of array
+const len = productsData.length;
+if (len > 1) {
+  // Product after current
+  relatedProducts.push(productsData[(currentIdx + 1) % len]);
+  // Product from further down
+  relatedProducts.push(productsData[(currentIdx + 3) % len]);
+  // Product from middle
+  relatedProducts.push(productsData[(currentIdx + 5) % len]);
 }
 
 document.getElementById('relatedProducts').innerHTML = relatedProducts.map(p => 
