@@ -418,6 +418,24 @@ function renderProducts() {
     });
   }
   
+  // Apply min quantity filter
+  const selectedQtyRanges = [];
+  if (priceCheckboxes[5].checked) selectedQtyRanges.push({min: 1, max: 50});
+  if (priceCheckboxes[6].checked) selectedQtyRanges.push({min: 51, max: 100});
+  if (priceCheckboxes[7].checked) selectedQtyRanges.push({min: 101, max: 500});
+  if (priceCheckboxes[8].checked) selectedQtyRanges.push({min: 501, max: Infinity});
+  
+  if (selectedQtyRanges.length > 0) {
+    filtered = filtered.filter(p => {
+      // Check each quantity tier (50, 100, 250, 500, 1000)
+      const tiers = [50, 100, 250, 500, 1000];
+      return tiers.some(tier => {
+        if (tier > 500) return selectedQtyRanges.some(r => tier >= r.min);
+        return selectedQtyRanges.some(r => tier >= r.min && tier <= r.max);
+      });
+    });
+  }
+  
   const totalPages = Math.ceil(filtered.length / productsPerPage);
   if (currentPage > totalPages) currentPage = 1;
   renderPagination(totalPages);
