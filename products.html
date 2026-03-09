@@ -517,8 +517,8 @@ function renderProducts() {
   const totalPages = Math.ceil(filtered.length / productsPerPage);
   if (currentPage > totalPages) currentPage = 1;
   renderPagination(totalPages);
-  const start = (currentPage - 1) * productsPerPage;
-  const pageProducts = filtered.slice(start, start + productsPerPage);
+  const pStart = (currentPage - 1) * productsPerPage;
+  const pageProducts = filtered.slice(pStart, pStart + productsPerPage);
   
   grid.innerHTML = pageProducts.map(p => `
     <div class="col-6 col-md-4 col-lg-4">
@@ -534,8 +534,8 @@ function renderProducts() {
     </div>
   `).join('');
   
-  const end = Math.min(start + productsPerPage, filtered.length);
-  document.getElementById('productCount').textContent = `Showing ${start + 1}-${end} of ${filtered.length} products`;
+  const pEnd = Math.min(pStart + productsPerPage, filtered.length);
+  document.getElementById('productCount').textContent = `Showing ${pStart + 1}-${pEnd} of ${filtered.length} products`;
 }
 
 function toggleCategory(catId) {
