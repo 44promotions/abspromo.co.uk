@@ -165,7 +165,7 @@ footer .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); margin-top:
           <div class="spec-row"><span class="spec-label">Colors</span><span class="spec-value" id="specColor">-</span></div>
           <div class="spec-row"><span class="spec-label">Size</span><span class="spec-value" id="specSize">-</span></div>
           <div class="spec-row"><span class="spec-label">Made In</span><span class="spec-value" id="specMadeIn">-</span></div>
-          <div class="spec-row"><span class="spec-label">Print Method</span><span class="spec-value" id="specPrint">-</span></div>
+          <div class="spec-row"><span class="spec-label">Set Up Charge</span><span class="spec-value" id="specPrint">£35 1 Color 1 Location</span></div>
           <div class="spec-row"><span class="spec-label">Production Time</span><span class="spec-value" id="specTime">-</span></div>
         </div>
         
@@ -269,7 +269,7 @@ document.getElementById('specMaterial').textContent = product.material || '-';
 document.getElementById('specColor').textContent = product.color || '-';
 document.getElementById('specSize').textContent = (product.length || '-') + ' x ' + (product.width || '-') + ' x ' + (product.height || '-') + ' mm';
 document.getElementById('specMadeIn').textContent = product.made_in || '-';
-document.getElementById('specPrint').textContent = 'Set Up Charge £35 1 Color 1 Location';
+
 document.getElementById('specTime').textContent = (product.delivery_time_min || '-') + '-' + (product.delivery_time_max || '-') + ' days';
 
 // Prices - two rows
