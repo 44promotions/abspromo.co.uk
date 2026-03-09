@@ -161,15 +161,14 @@ footer .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); margin-top:
             <li><a href="#" class="active" onclick="filterCategory('all')">All Products</a></li>
             <li><a href="#" onclick="filterCategory('drinkware')">Drinkware</a></li>
             <li><a href="#" onclick="filterCategory('bags')">Bags & Backpacks</a></li>
+            <li><a href="#" onclick="filterCategory('apparel')">Apparel & Clothing</a></li>
             <li><a href="#" onclick="filterCategory('tech')">Tech & Electronics</a></li>
             <li><a href="#" onclick="filterCategory('office')">Office & Stationery</a></li>
             <li><a href="#" onclick="filterCategory('home')">Home & Kitchen</a></li>
             <li><a href="#" onclick="filterCategory('sports')">Sports & Outdoors</a></li>
-            <li><a href="#" onclick="filterCategory('beauty')">Health & Beauty</a></li>
             <li><a href="#" onclick="filterCategory('automotive')">Automotive</a></li>
-            <li><a href="#" onclick="filterCategory('toys')">Toys & Games</a></li>
-            <li><a href="#" onclick="filterCategory('apparel')">Clothing & Apparel</a></li>
-            <li><a href="#" onclick="filterCategory('accessories')">Accessories</a></li>
+            <li><a href="#" onclick="filterCategory('beauty')">Health & Beauty</a></li>
+            <li><a href="#" onclick="filterCategory('toys')">Toys & Gifts</a></li>
             <li><a href="#" onclick="filterCategory('pet')">Pet Supplies</a></li>
             <li><a href="#" onclick="filterCategory('other')">Other</a></li>
           </ul>
@@ -269,7 +268,9 @@ const productsPerPage = 12;
 function renderProducts() {
   const grid = document.getElementById('productsGrid');
   // Show all products - category filter shows all for now
-  let filtered = productsData;
+  let filtered = currentCategory === 'all' 
+    ? productsData 
+    : productsData.filter(p => getProductCategory(p) === currentCategory);
   
   const totalPages = Math.ceil(filtered.length / productsPerPage);
   if (currentPage > totalPages) currentPage = 1;
@@ -300,6 +301,26 @@ function filterCategory(cat) {
   document.querySelectorAll('.category-list a').forEach(a => a.classList.remove('active'));
   event.target.closest('a').classList.add('active');
   renderProducts();
+}
+
+// Category mapping based on keywords
+function getProductCategory(product) {
+  const name = (product.name || '').toLowerCase();
+  const desc = (product.description || '').toLowerCase();
+  const text = name + ' ' + desc;
+  
+  if (text.match(/mug|cup|glass|bottle|tumbler|thermos|flask|water|drink|coffee|tea/)) return 'drinkware';
+  if (text.match(/bag|backpack|tote|pouch|wallet|purse|handbag/)) return 'bags';
+  if (text.match(/shirt|jacket|coat|hoodie|cap|hat|scarf|glove|sock|vest|polo|tshirt|apparel|clothing/)) return 'apparel';
+  if (text.match(/usb|charger|cable|speaker|headphone|power bank|mouse|keyboard|led|light|clock|tech|electronic/)) return 'tech';
+  if (text.match(/pen|notebook|journal|folder|organizer|desk|stationery|office/)) return 'office';
+  if (text.match(/kitchen|cooking|baking|apron|pot|pan|container|storage|box|spoon|fork/)) return 'home';
+  if (text.match(/sport|fitness|gym|yoga|outdoor|camping|hiking|cycling|swim|ball/)) return 'sports';
+  if (text.match(/car|automotive|vehicle|seat|mat|holder/)) return 'automotive';
+  if (text.match(/cosmetic|makeup|beauty|hair|brush|mirror|pillow/)) return 'beauty';
+  if (text.match(/toy|game|puzzle|kid|baby/)) return 'toys';
+  if (text.match(/pet|dog|cat|animal|leash|collar|bed/)) return 'pet';
+  return 'other';
 }
 
 function changePage(page) {
