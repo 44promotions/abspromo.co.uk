@@ -362,19 +362,22 @@ footer ul li a:hover { color: #f4c542; }
 <script>
 // Featured Products - fixed logic: first 8 products from data
 const featuredProducts = productsData.slice(0, 8);
-document.getElementById('productsGrid').innerHTML = featuredProducts.map(p => 
-  '<div class="col-6 col-md-4 col-lg-3">' +
+document.getElementById('productsGrid').innerHTML = featuredProducts.map(p => {
+  // Find the cheapest price from all price fields
+  const prices = [p.price1, p.price2, p.price3, p.price4, p.price5].filter(p => p && p > 0);
+  const cheapestPrice = prices.length > 0 ? Math.min(...prices) : null;
+  return '<div class="col-6 col-md-4 col-lg-3">' +
     '<div class="product-card" onclick="location.href=\'product-detail.html?id=' + p.product_number + '\'" style="cursor:pointer;">' +
       '<div class="product-img">' +
         '<img src="' + (p.images1 || 'https://via.placeholder.com/300x300') + '" alt="' + p.name + '">' +
       '</div>' +
       '<div class="product-info">' +
         '<div class="product-name">' + p.name + '</div>' +
-        '<div class="product-price">From £' + (p.price1 ? p.price1.toFixed(2) : '-') + '</div>' +
+        '<div class="product-price">From £' + (cheapestPrice ? cheapestPrice.toFixed(2) : '-') + '</div>' +
       '</div>' +
     '</div>' +
-  '</div>'
-).join('');
+  '</div>';
+}).join('');
 </script>
 <script>
 // Language translations
