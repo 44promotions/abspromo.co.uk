@@ -370,15 +370,8 @@ document.title = product.name + ' - ABSPromo';
 function searchProducts() {
   const query = document.getElementById('searchInput').value.trim();
   if (!query) return;
-  const found = productsData.find(p => 
-    p.product_number.toLowerCase() === query.toLowerCase() ||
-    p.name.toLowerCase().includes(query.toLowerCase())
-  );
-  if (found) {
-    window.location.href = 'product-detail.html?id=' + found.product_number;
-  } else {
-    window.location.href = 'products.html?search=' + encodeURIComponent(query);
-  }
+  // Always go to products page with search results
+  window.location.href = 'products.html?search=' + encodeURIComponent(query);
 }
 </script>
 </body>
