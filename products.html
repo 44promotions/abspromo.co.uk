@@ -47,6 +47,18 @@ header { background: #fff; box-shadow: 0 2px 10px rgba(0,0,0,0.08); }
 .category-list li a:hover, .category-list li a.active { background: #1c3f87; color: #fff; }
 .category-list li a span { opacity: 0.7; font-size: 12px; }
 
+/* Collapsible Categories */
+.category-group { margin-bottom: 5px; }
+.category-parent { display: flex; justify-content: space-between; align-items: center; padding: 12px 15px; background: #f8f9fa; border-radius: 8px; cursor: pointer; font-weight: 600; color: #333; transition: all 0.2s; }
+.category-parent:hover { background: #1c3f87; color: #fff; }
+.category-parent i { font-size: 12px; transition: transform 0.3s; }
+.category-parent.active i { transform: rotate(180deg); }
+.category-children { display: none; padding: 8px 0 8px 15px; }
+.category-children.show { display: block; }
+.category-children a { display: block; padding: 8px 15px; color: #666; font-size: 14px; border-radius: 5px; transition: all 0.2s; }
+.category-children a:hover { background: #e9ecef; color: #1c3f87; }
+.category-children a.active { background: #1c3f87; color: #fff; }
+
 .filter-group { margin-bottom: 20px; }
 .filter-group h6 { color: #333; font-size: 14px; margin-bottom: 10px; }
 .filter-group label { color: #555; font-size: 13px; display: block; margin-bottom: 8px; cursor: pointer; }
@@ -157,31 +169,138 @@ footer .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); margin-top:
         <!-- Categories -->
         <div class="sidebar">
           <h5><i class="fas fa-th-large me-2"></i>Categories</h5>
-          <ul class="category-list" id="categoryList">
-            <li><a href="#" class="active" onclick="filterCategory('all')">All Products</a></li>
-            <li><a href="#" onclick="filterCategory('drinkware')">Drinkware</a></li>
-            <li><a href="#" onclick="filterCategory('mugs')">Mugs</a></li>
-            <li><a href="#" onclick="filterCategory('bottles')">Bottles</a></li>
-            <li><a href="#" onclick="filterCategory('cups')">Cups & Glasses</a></li>
-            <li><a href="#" onclick="filterCategory('bags')">Bags</a></li>
-            <li><a href="#" onclick="filterCategory('backpacks')">Backpacks</a></li>
-            <li><a href="#" onclick="filterCategory('apparel')">Apparel</a></li>
-            <li><a href="#" onclick="filterCategory('caps-hats')">Caps & Hats</a></li>
-            <li><a href="#" onclick="filterCategory('shirts')">Shirts</a></li>
-            <li><a href="#" onclick="filterCategory('tech')">Tech & Electronics</a></li>
-            <li><a href="#" onclick="filterCategory('usb-drives')">USB Drives</a></li>
-            <li><a href="#" onclick="filterCategory('power-banks')">Power Banks</a></li>
-            <li><a href="#" onclick="filterCategory('office')">Office</a></li>
-            <li><a href="#" onclick="filterCategory('pens')">Pens</a></li>
-            <li><a href="#" onclick="filterCategory('notebooks')">Notebooks</a></li>
-            <li><a href="#" onclick="filterCategory('home')">Home & Kitchen</a></li>
-            <li><a href="#" onclick="filterCategory('sports')">Sports & Outdoors</a></li>
-            <li><a href="#" onclick="filterCategory('automotive')">Automotive</a></li>
-            <li><a href="#" onclick="filterCategory('beauty')">Health & Beauty</a></li>
-            <li><a href="#" onclick="filterCategory('toys')">Toys & Gifts</a></li>
-            <li><a href="#" onclick="filterCategory('pet')">Pet Supplies</a></li>
-            <li><a href="#" onclick="filterCategory('other')">Other</a></li>
-          </ul>
+          
+          <!-- Main Categories with Subcategories -->
+          <div class="category-group">
+            <div class="category-parent" onclick="toggleCategory('drinkware')">
+              <span>Drinkware</span>
+              <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="category-children" id="drinkware">
+              <a href="#" onclick="filterCategory('all')">All Drinkware</a>
+              <a href="#" onclick="filterCategory('mugs')">Mugs</a>
+              <a href="#" onclick="filterCategory('bottles')">Bottles</a>
+              <a href="#" onclick="filterCategory('cups')">Cups & Glasses</a>
+            </div>
+          </div>
+          
+          <div class="category-group">
+            <div class="category-parent" onclick="toggleCategory('bags')">
+              <span>Bags</span>
+              <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="category-children" id="bags">
+              <a href="#" onclick="filterCategory('all')">All Bags</a>
+              <a href="#" onclick="filterCategory('backpacks')">Backpacks</a>
+              <a href="#" onclick="filterCategory('tote-bags')">Tote Bags</a>
+              <a href="#" onclick="filterCategory('pouches')">Pouches</a>
+              <a href="#" onclick="filterCategory('wallets')">Wallets</a>
+            </div>
+          </div>
+          
+          <div class="category-group">
+            <div class="category-parent" onclick="toggleCategory('apparel')">
+              <span>Apparel</span>
+              <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="category-children" id="apparel">
+              <a href="#" onclick="filterCategory('all')">All Apparel</a>
+              <a href="#" onclick="filterCategory('shirts')">Shirts</a>
+              <a href="#" onclick="filterCategory('jackets')">Jackets</a>
+              <a href="#" onclick="filterCategory('caps-hats')">Caps & Hats</a>
+              <a href="#" onclick="filterCategory('accessories')">Accessories</a>
+            </div>
+          </div>
+          
+          <div class="category-group">
+            <div class="category-parent" onclick="toggleCategory('tech')">
+              <span>Tech & Electronics</span>
+              <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="category-children" id="tech">
+              <a href="#" onclick="filterCategory('all')">All Tech</a>
+              <a href="#" onclick="filterCategory('usb-drives')">USB Drives</a>
+              <a href="#" onclick="filterCategory('power-banks')">Power Banks</a>
+              <a href="#" onclick="filterCategory('speakers')">Speakers</a>
+              <a href="#" onclick="filterCategory('audio')">Audio</a>
+              <a href="#" onclick="filterCategory('chargers')">Chargers</a>
+              <a href="#" onclick="filterCategory('cables')">Cables</a>
+              <a href="#" onclick="filterCategory('lights')">Lights</a>
+              <a href="#" onclick="filterCategory('clocks')">Clocks</a>
+            </div>
+          </div>
+          
+          <div class="category-group">
+            <div class="category-parent" onclick="toggleCategory('office')">
+              <span>Office</span>
+              <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="category-children" id="office">
+              <a href="#" onclick="filterCategory('all')">All Office</a>
+              <a href="#" onclick="filterCategory('pens')">Pens</a>
+              <a href="#" onclick="filterCategory('notebooks')">Notebooks</a>
+              <a href="#" onclick="filterCategory('office-supplies')">Office Supplies</a>
+            </div>
+          </div>
+          
+          <div class="category-group">
+            <div class="category-parent" onclick="toggleCategory('home')">
+              <span>Home & Kitchen</span>
+              <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="category-children" id="home">
+              <a href="#" onclick="filterCategory('all')">All Home</a>
+              <a href="#" onclick="filterCategory('kitchen')">Kitchen</a>
+              <a href="#" onclick="filterCategory('aprons')">Aprons</a>
+              <a href="#" onclick="filterCategory('storage')">Storage</a>
+              <a href="#" onclick="filterCategory('utensils')">Utensils</a>
+            </div>
+          </div>
+          
+          <div class="category-group">
+            <div class="category-parent" onclick="toggleCategory('sports')">
+              <span>Sports & Outdoors</span>
+              <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="category-children" id="sports">
+              <a href="#" onclick="filterCategory('all')">All Sports</a>
+              <a href="#" onclick="filterCategory('yoga')">Yoga</a>
+              <a href="#" onclick="filterCategory('fitness')">Fitness</a>
+              <a href="#" onclick="filterCategory('camping')">Camping</a>
+              <a href="#" onclick="filterCategory('outdoor')">Outdoor</a>
+              <a href="#" onclick="filterCategory('balls')">Balls</a>
+            </div>
+          </div>
+          
+          <div class="category-group">
+            <div class="category-parent" onclick="filterCategory('automotive')">
+              <span>Automotive</span>
+            </div>
+          </div>
+          
+          <div class="category-group">
+            <div class="category-parent" onclick="filterCategory('beauty')">
+              <span>Health & Beauty</span>
+            </div>
+          </div>
+          
+          <div class="category-group">
+            <div class="category-parent" onclick="filterCategory('toys')">
+              <span>Toys & Gifts</span>
+            </div>
+          </div>
+          
+          <div class="category-group">
+            <div class="category-parent" onclick="filterCategory('pet')">
+              <span>Pet Supplies</span>
+            </div>
+          </div>
+          
+          <div class="category-group">
+            <div class="category-parent" onclick="filterCategory('other')">
+              <span>Other</span>
+            </div>
+          </div>
         </div>
         
         <!-- Price Filter -->
@@ -305,11 +424,28 @@ function renderProducts() {
   document.getElementById('productCount').textContent = `Showing ${filtered.length} products`;
 }
 
+function toggleCategory(catId) {
+  const el = document.getElementById(catId);
+  const parent = el.previousElementSibling;
+  if (el.classList.contains('show')) {
+    el.classList.remove('show');
+    parent.classList.remove('active');
+  } else {
+    // Close all others
+    document.querySelectorAll('.category-children').forEach(c => c.classList.remove('show'));
+    document.querySelectorAll('.category-parent').forEach(p => p.classList.remove('active'));
+    el.classList.add('show');
+    parent.classList.add('active');
+  }
+}
+
 function filterCategory(cat) {
   currentCategory = cat;
   currentPage = 1;
-  document.querySelectorAll('.category-list a').forEach(a => a.classList.remove('active'));
-  event.target.closest('a').classList.add('active');
+  document.querySelectorAll('.category-children a').forEach(a => a.classList.remove('active'));
+  if (event && event.target) {
+    event.target.classList.add('active');
+  }
   renderProducts();
 }
 
