@@ -280,7 +280,7 @@ function renderProducts() {
   
   grid.innerHTML = pageProducts.map(p => `
     <div class="col-6 col-md-4 col-lg-4">
-      <div class="product-card">
+      <div class="product-card" onclick="location.href='product-detail.html?id=${p.product_number}'" style="cursor:pointer;">
         <div class="product-img">
           <img src="${p.images1 || 'https://via.placeholder.com/300x300'}" alt="${p.name}">
         </div>
