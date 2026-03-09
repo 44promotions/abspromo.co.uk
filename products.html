@@ -534,7 +534,9 @@ function renderProducts() {
     </div>
   `).join('');
   
-  document.getElementById('productCount').textContent = `Showing ${filtered.length} products`;
+  const start = (currentPage - 1) * productsPerPage;
+  const end = Math.min(start + productsPerPage, filtered.length);
+  document.getElementById('productCount').textContent = `Showing ${start + 1}-${end} of ${filtered.length} products`;
 }
 
 function toggleCategory(catId) {
@@ -724,9 +726,57 @@ function renderPagination(totalPages) {
   let html = '<li class="page-item ' + (currentPage === 1 ? 'disabled' : '') + '">' +
     '<a class="page-link" href="#" onclick="changePage(' + (currentPage - 1) + ')">‹</a></li>';
   
-  for (let i = 1; i <= totalPages && i <= 5; i++) {
-    html += '<li class="page-item ' + (currentPage === i ? 'active' : '') + '">' +
-      '<a class="page-link" href="#" onclick="changePage(' + i + ')">' + i + '</a></li>';
+  // Show max 5 pages with smart ellipsis
+  if (totalPages <= 7) {
+    // Show all pages if 7 or less
+    for (let i = 1; i <= totalPages; i++) {
+      html += '<li class="page-item ' + (currentPage === i ? 'active' : '') + '">' +
+        '<a class="page-link" href="#" onclick="changePage(' + i + ')">' + i + '</a></li>';
+    }
+  } else {
+    // More than 7 pages - show smart pagination
+    let startPage = 1;
+    let endPage = 5;
+    
+    if (currentPage > 3) {
+      startPage = currentPage - 2;
+      endPage = currentPage + 2;
+    }
+    
+    if (endPage > totalPages) {
+      endPage = totalPages;
+      startPage = Math.max(1, totalPages - 4);
+    }
+    
+    // First page
+    if (startPage > 1) {
+      html += '<li class="page-item ' + (currentPage === 1 ? 'active' : '') + '">' +
+        '<a class="page-link" href="#" onclick="changePage(1)">1</a></li>';
+    }
+    
+    // Ellipsis after first page
+    if (startPage > 2) {
+      html += '<li class="page-item disabled"><span class="page-link">...</span></li>';
+    }
+    
+    // Middle pages
+    for (let i = startPage; i <= endPage; i++) {
+      if (i > 1 && i < totalPages) {
+        html += '<li class="page-item ' + (currentPage === i ? 'active' : '') + '">' +
+          '<a class="page-link" href="#" onclick="changePage(' + i + ')">' + i + '</a></li>';
+      }
+    }
+    
+    // Ellipsis before last page
+    if (endPage < totalPages - 1) {
+      html += '<li class="page-item disabled"><span class="page-link">...</span></li>';
+    }
+    
+    // Last page
+    if (endPage < totalPages) {
+      html += '<li class="page-item ' + (currentPage === totalPages ? 'active' : '') + '">' +
+        '<a class="page-link" href="#" onclick="changePage(' + totalPages + ')">' + totalPages + '</a></li>';
+    }
   }
   
   html += '<li class="page-item ' + (currentPage === totalPages ? 'disabled' : '') + '">' +
@@ -774,7 +824,9 @@ function searchProducts() {
       </div>
     </div>
   `).join('');
-  document.getElementById('productCount').textContent = `Found ${filtered.length} products`;
+  const searchStart = (currentPage - 1) * productsPerPage;
+  const searchEnd = Math.min(searchStart + productsPerPage, filtered.length);
+  document.getElementById('productCount').textContent = `Showing ${searchStart + 1}-${searchEnd} of ${filtered.length} products`;
 }
 
 function sortProducts() {
@@ -819,7 +871,9 @@ if (urlSearch) {
       </div>
     </div>
   `).join('');
-  document.getElementById('productCount').textContent = `Found ${filtered.length} products`;
+  const urlStart = (currentPage - 1) * productsPerPage;
+  const urlEnd = Math.min(urlStart + productsPerPage, filtered.length);
+  document.getElementById('productCount').textContent = `Showing ${urlStart + 1}-${urlEnd} of ${filtered.length} products`;
 } else if (urlCategory) {
   currentCategory = urlCategory;
   setTimeout(() => {
