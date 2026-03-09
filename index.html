@@ -108,8 +108,11 @@ footer ul li a:hover { color: #f4c542; }
         </div>
       </div>
       <div class="col-md-6 text-md-end">
-        <a href="#"><i class="fab fa-facebook-f me-3"></i></a>
-        <a href="#"><i class="fab fa-instagram me-3"></i></a>
+        <select id="langSelect" onchange="changeLanguage(this.value)" style="background:transparent;border:1px solid rgba(255,255,255,0.5);color:#fff;padding:4px 8px;border-radius:4px;cursor:pointer;">
+          <option value="en">English</option>
+          <option value="de">Deutsch</option>
+        </select>
+        <a href="#"><i class="fab fa-facebook-f ms-3 me-3"></i></a>
         <a href="#"><i class="fab fa-linkedin-in"></i></a>
       </div>
     </div>
@@ -375,6 +378,115 @@ document.getElementById('productsGrid').innerHTML = featuredProducts.map(p =>
     '</div>' +
   '</div>'
 ).join('');
+</script>
+<script>
+// Language translations
+const translations = {
+  en: {
+    heroTitle: "Premium Promotional Products for Your Brand",
+    heroDesc: "Stand out with high-quality branded merchandise. From drinkware to tech accessories, we help your business make a lasting impression.",
+    browseProducts: "Browse Products",
+    shopByCategory: "Shop by Category",
+    featuredProducts: "Featured Products",
+    whyChooseUs: "Why Choose ABSPromo",
+    fastDelivery: "Fast Delivery",
+    fastDeliveryDesc: "Quick turnaround times to meet your deadlines",
+    qualityGuaranteed: "Quality Guaranteed",
+    qualityGuaranteedDesc: "Premium products with excellent print quality",
+    competitivePricing: "Competitive Pricing",
+    competitivePricingDesc: "Best value for your promotional needs",
+    support: "24/7 Support",
+    supportDesc: "Dedicated account managers for your needs",
+    aboutTitle: "About ABSPromo",
+    aboutDesc1: "ABSPromo is a leading supplier of promotional products in the UK. Based in Coventry, we help businesses enhance their brand visibility through high-quality merchandise.",
+    aboutDesc2: "With over 14,000 products and years of experience, we specialize in custom printing and branding services for businesses of all sizes.",
+    aboutDesc3: "Whether you need corporate gifts, event merchandise, or branded giveaways, we deliver outstanding products that exceed your expectations.",
+    quickLinks: "Quick Links",
+    contactUs: "Contact Us",
+    home: "Home",
+    products: "Products",
+    aboutUs: "About Us",
+    contact: "Contact"
+  },
+  de: {
+    heroTitle: "Hochwertige Werbeartikel für Ihre Marke",
+    heroDesc: "Hervorragend mit hochwertigen Markenartikeln. Von Trinkgeschirr bis Tech-Zubehör helfen wir Ihrem Unternehmen, einen bleibenden Eindruck zu hinterlassen.",
+    browseProducts: "Produkte durchsuchen",
+    shopByCategory: "Nach Kategorie einkaufen",
+    featuredProducts: "Ausgewählte Produkte",
+    whyChooseUs: "Warum ABSPromo wählen",
+    fastDelivery: "Schnelle Lieferung",
+    fastDeliveryDesc: "Schnelle Bearbeitung, um Ihre Fristen einzuhalten",
+    qualityGuaranteed: "Qualität garantiert",
+    qualityGuaranteedDesc: "Premium-Produkte mit exzellentem Druck",
+    competitivePricing: "Wettbewerbsfähige Preise",
+    competitivePricingDesc: "Bestes Preis-Leistungs-Verhältnis für Ihre Werbeartikel",
+    support: "24/7 Support",
+    supportDesc: "Dedizierte Account-Manager für Ihre Bedürfnisse",
+    aboutTitle: "Über ABSPromo",
+    aboutDesc1: "ABSPromo ist ein führender Lieferant von Werbeartikeln in Großbritannien. Von Coventry aus helfen wir Unternehmen, ihre Markenbekanntheit durch hochwertige Merchandising-Produkte zu steigern.",
+    aboutDesc2: "Mit über 14.000 Produkten und jahrelanger Erfahrung sind wir auf maßgeschneiderten Druck und Branding-Dienstleistungen für Unternehmen jeder Größe spezialisiert.",
+    aboutDesc3: "Ob Firmengeschenke, Event-Merchandise oder Marken-Werbemittel - wir liefern außergewöhnliche Produkte, die Ihre Erwartungen übertreffen.",
+    quickLinks: "Schnelllinks",
+    contactUs: "Kontakt",
+    home: "Startseite",
+    products: "Produkte",
+    aboutUs: "Über uns",
+    contact: "Kontakt"
+  }
+};
+
+function changeLanguage(lang) {
+  const t = translations[lang];
+  
+  // Hero section
+  document.querySelector('.hero-content h1').textContent = t.heroTitle;
+  document.querySelector('.hero-content p').textContent = t.heroDesc;
+  document.querySelector('.hero-btn').textContent = t.browseProducts;
+  
+  // Categories section
+  document.querySelector('.categories h2').textContent = t.shopByCategory;
+  
+  // Products section
+  document.querySelector('.products h2').textContent = t.featuredProducts;
+  
+  // Why Choose Us
+  document.querySelector('.why-us h2').textContent = t.whyChooseUs;
+  const whyItems = document.querySelectorAll('.why-item');
+  whyItems[0].querySelector('h4').textContent = t.fastDelivery;
+  whyItems[0].querySelector('p').textContent = t.fastDeliveryDesc;
+  whyItems[1].querySelector('h4').textContent = t.qualityGuaranteed;
+  whyItems[1].querySelector('p').textContent = t.qualityGuaranteedDesc;
+  whyItems[2].querySelector('h4').textContent = t.competitivePricing;
+  whyItems[2].querySelector('p').textContent = t.competitivePricingDesc;
+  whyItems[3].querySelector('h4').textContent = t.support;
+  whyItems[3].querySelector('p').textContent = t.supportDesc;
+  
+  // About section
+  document.querySelector('.about h2').textContent = t.aboutTitle;
+  const aboutPs = document.querySelectorAll('.about p');
+  aboutPs[0].textContent = t.aboutDesc1;
+  aboutPs[1].textContent = t.aboutDesc2;
+  aboutPs[2].textContent = t.aboutDesc3;
+  
+  // Footer
+  const footerHeaders = document.querySelectorAll('footer h5');
+  footerHeaders[0].textContent = 'ABSPromo';
+  footerHeaders[1].textContent = t.quickLinks;
+  footerHeaders[2].textContent = t.contactUs;
+  
+  // Save preference
+  localStorage.setItem('abspromo_lang', lang);
+}
+
+// Load saved language preference
+document.addEventListener('DOMContentLoaded', function() {
+  const savedLang = localStorage.getItem('abspromo_lang');
+  if (savedLang) {
+    document.getElementById('langSelect').value = savedLang;
+    changeLanguage(savedLang);
+  }
+});
 </script>
 </body>
 </html>
