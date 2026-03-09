@@ -571,8 +571,9 @@ function requestQuote(id) {
 
 function searchProducts() {
   const query = document.getElementById('searchInput').value.toLowerCase();
-  const filtered = products.filter(p => p.name.toLowerCase().includes(query));
+  const filtered = productsData.filter(p => p.name.toLowerCase().includes(query));
   currentCategory = 'all';
+  currentPage = 1;
   renderProducts();
 }
 
